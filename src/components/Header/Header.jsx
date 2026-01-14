@@ -26,6 +26,7 @@ export default function Header() {
                 <div className="flex items-center justify-between h-24 lg:h-32">
                     {/* Logo */}
                     <div className="shrink-0">
+                        <Link to="/">
                         <button onClick={scrollToTop}>
                             <img
                                 src={logo}
@@ -33,6 +34,7 @@ export default function Header() {
                                 className="h-30 lg:h-40 w-auto cursor-pointer"
                             />
                         </button>
+                        </Link>
                     </div>
 
                     {/* Nav Desktop */}
@@ -93,6 +95,15 @@ export default function Header() {
             {mobileOpen && (
                 <div className="md:hidden border-t border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900">
                     <ul className="flex flex-col p-4 font-bold text-lg tracking-widest uppercase">
+                               <li>
+                            <Link
+                                to="/"
+                                className="block py-4 border-b border-zinc-100 dark:border-zinc-800"
+                                onClick={() => setMobileOpen(false)}
+                            >
+                                Inicio
+                            </Link>
+                        </li>
                         <li>
                             <Link
                                 to="/reglamento"
