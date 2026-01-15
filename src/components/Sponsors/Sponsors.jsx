@@ -40,17 +40,17 @@ export default function Sponsors() {
                             />
                         </div>
 
-                        <h3 className="text-sm font-black uppercase mb-2">
+                        {/* <h3 className="text-sm font-black uppercase mb-2">
                             {sponsor.nombre}
-                        </h3>
+                        </h3> */}
 
                         <p className="text-gray-600 dark:text-gray-400 mb-4 text-xs leading-relaxed">
                             {sponsor.descripcion}
                         </p>
-
+                        <p></p>
                         <a
                             href={sponsor.sitio}
-                            className="inline-flex items-center justify-center text-[10px] font-bold uppercase tracking-widest group-hover:underline"
+                            className="inline-flex items-center justify-center text-[15px] font-bold uppercase tracking-widest group-hover:underline"
                             target="_blank"
                             rel="noopener noreferrer"
                         >

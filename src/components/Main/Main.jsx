@@ -43,10 +43,10 @@ const Main = () => {
     const ultimaNoticia = eventos.length > 0 ? eventos[0] : null;
 
 
-      // Mostrar más noticias   
-      const handleVerMas = () => {
-    setVisibleCount((prev) => prev + 2); // Muestra 4 más cada vez
-  };
+    // Mostrar más noticias   
+    const handleVerMas = () => {
+        setVisibleCount((prev) => prev + 2); // Muestra 4 más cada vez
+    };
 
     return (
         <main className="container mx-auto px-4 lg:px-8 py-12">
@@ -55,12 +55,14 @@ const Main = () => {
                 <div className="lg:col-span-8 group cursor-pointer">
                     {ultimaNoticia ? (
                         <>
-                                <span className="inline-block bg-black text-white text-[10px] px-2 py-1 uppercase font-black mb-4">
-                                    {formatFecha(ultimaNoticia.fecha)}
-                                </span>
+                            <span className="inline-block bg-black text-white text-[10px] px-2 py-1 uppercase font-black mb-4">
+                                {formatFecha(ultimaNoticia.fecha)}
+                            </span>
+                            <Link to={`/noticia/${ultimaNoticia.id}`}>
                                 <h1 className="text-4xl lg:text-6xl font-display font-black leading-tight mb-4 uppercase tracking-tighter">
                                     {ultimaNoticia.titulo}
                                 </h1>
+                            </Link>
                             <div className="overflow-hidden mb-6 bg-zinc-200 dark:bg-zinc-800 aspect-video">
                                 <img
                                     alt={ultimaNoticia.titulo}
@@ -80,45 +82,47 @@ const Main = () => {
                 </div>
 
                 {/* Columna lateral: últimas noticias */}
-<div className="lg:col-span-4 flex flex-col gap-8">
-      <h3 className="font-display font-black text-xl uppercase border-b-2 border-black dark:border-white pb-2">
-        Últimas Noticias
-      </h3>
+                <div className="lg:col-span-4 flex flex-col gap-8">
+                    <h3 className="font-display font-black text-xl uppercase border-b-2 border-black dark:border-white pb-2">
+                        Últimas Noticias
+                    </h3>
 
-      {eventos.length > 0 ? (
-        <>
-          {eventos.slice(0, visibleCount).map((evento) => (
-            <div key={evento.id} className="flex gap-4 group cursor-pointer">
-              <div className="w-24 h-24 shrink-0 bg-zinc-200 dark:bg-zinc-800 overflow-hidden">
-                <img
-                  src={evento.imagenes?.[0] || noticiaDefault}
-                  alt={evento.titulo}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-              </div>
-              <div>
-                <p className="text-xs text-zinc-500 mt-1 uppercase font-medium">
-                  {formatFecha(evento.fecha)}
-                </p>
-                <h4 className="font-bold text-sm leading-snug group-hover:underline">
-                  {evento.titulo}
-                </h4>
-              </div>
-            </div>
-          ))}
+                    {eventos.length > 0 ? (
+                        <>
+                            {eventos.slice(0, visibleCount).map((evento) => (
+                                <div key={evento.id} className="flex gap-4 group cursor-pointer">
+                                    <Link to={`/noticia/${evento.id}`} className="flex gap-4 group cursor-pointer">
+                                        <div className="w-24 h-24 shrink-0 bg-zinc-200 dark:bg-zinc-800 overflow-hidden">
+                                            <img
+                                                src={evento.imagenes?.[0] || noticiaDefault}
+                                                alt={evento.titulo}
+                                                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                            />
+                                        </div>
+                                        <div>
+                                            <p className="text-xs text-zinc-500 mt-1 uppercase font-medium">
+                                                {formatFecha(evento.fecha)}
+                                            </p>
+                                            <h4 className="font-bold text-sm leading-snug group-hover:underline">
+                                                {evento.titulo}
+                                            </h4>
+                                        </div>
+                                    </Link>
+                                </div>
+                            ))}
 
-          {visibleCount < eventos.length && (
-            <button
-              onClick={handleVerMas}
-              className="mt-2 text-sm font-bold uppercase text-blue-600 hover:underline self-start"
-            >
-              Ver noticias anteriores
-            </button>
-          )}
-        </>
-      ) : (
-        <p>No hay eventos disponibles.</p>
-      )}
+                            {visibleCount < eventos.length && (
+                                <button
+                                    onClick={handleVerMas}
+                                    className="mt-2 text-sm font-bold uppercase text-blue-600 hover:underline self-start"
+                                >
+                                    Ver noticias anteriores
+                                </button>
+                            )}
+                        </>
+                    ) : (
+                        <p>No hay eventos disponibles.</p>
+                    )}
 
                     {/* Suscripción */}
                     <div className="mt-4 p-6 bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800">

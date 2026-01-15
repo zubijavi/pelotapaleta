@@ -6,7 +6,10 @@ import Footer from "./components/Footer/Footer.jsx";
 import Announcements from "./components/Announcements/Announcements.jsx";
 import Sponsors from "./components/Sponsors/Sponsors.jsx";
 import Players from "./components/Players/Players.jsx";
-
+import NewDetails from "./components/NewDetails/NewDetails.jsx";
+import Login from "./components/Login/Login";
+import Admin from "./components/Admin/Admin.jsx";
+import ProtectedRoute from "./components/ProtectedRoute.jsx";
 import "./App.css";
 
 function App() {
@@ -18,8 +21,19 @@ function App() {
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/reglamento" element={<Players />} />
-      </Routes>
+        <Route path="/noticia/:id" element={<NewDetails />} />
+        <Route path="/login" element={<Login />} />
+              <Route path="/login" element={<Login />} />
 
+      <Route 
+        path="/admin"
+        element={
+          <ProtectedRoute>
+            <Admin />
+          </ProtectedRoute>
+        }
+      />
+      </Routes>
       <Sponsors />
       <Footer />
     </Router>

@@ -48,6 +48,15 @@ export default function Header() {
                                     Inicio
                                 </Link>
                             </li>
+                                                     <li>
+                            <Link
+                                to="/login"
+                                className="block py-4 border-b border-zinc-100 dark:border-zinc-800"
+                                onClick={() => setMobileOpen(false)}
+                            >
+                                login
+                            </Link>
+                        </li>
                             <li>
                                 <Link
                                     to="/reglamento"
@@ -104,6 +113,7 @@ export default function Header() {
                                 Inicio
                             </Link>
                         </li>
+                
                         <li>
                             <Link
                                 to="/reglamento"
