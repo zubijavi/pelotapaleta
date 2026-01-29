@@ -1,7 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Header from "./components/Header/Header.jsx";
-import Main from "./components/Main/Main.jsx";
+import MainLayout from "./layouts/MainLayout";
+import Home from "./components/Main/Main.jsx";
 import Footer from "./components/Footer/Footer.jsx";
 import Announcements from "./components/Announcements/Announcements.jsx";
 import Sponsors from "./components/Sponsors/Sponsors.jsx";
@@ -19,20 +20,26 @@ function App() {
       <Header />
 
       <Routes>
-        <Route path="/" element={<Main />} />
-        <Route path="/reglamento" element={<Players />} />
-        <Route path="/noticia/:id" element={<NewDetails />} />
-        <Route path="/login" element={<Login />} />
-              <Route path="/login" element={<Login />} />
+        <Route element={<MainLayout />}>
 
-      <Route 
-        path="/admin"
-        element={
-          <ProtectedRoute>
-            <Admin />
-          </ProtectedRoute>
-        }
-      />
+          <Route path="/" element={<Home />} />
+          <Route path="/noticia/:id" element={<NewDetails />} />
+
+        </Route>
+        {/* <Route path="/" element={<Main />} /> */}
+        <Route path="/reglamento" element={<Players />} />
+        {/* <Route path="/noticia/:id" element={<NewDetails />} /> */}
+        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<Login />} />
+
+        <Route
+          path="/admin"
+          element={
+            <ProtectedRoute>
+              <Admin />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
       <Sponsors />
       <Footer />

@@ -27,20 +27,20 @@ export default function Header() {
                     {/* Logo */}
                     <div className="shrink-0">
                         <Link to="/">
-                        <button onClick={scrollToTop}>
-                            <img
-                                src={logo}
-                                alt="Rosario Pelota Pelota Logo"
-                                className="h-30 lg:h-40 w-auto cursor-pointer"
-                            />
-                        </button>
+                            <button onClick={scrollToTop}>
+                                <img
+                                    src={logo}
+                                    alt="Rosario Pelota Pelota Logo"
+                                    className="h-30 lg:h-40 w-auto cursor-pointer"
+                                />
+                            </button>
                         </Link>
                     </div>
 
                     {/* Nav Desktop */}
                     <nav className="hidden md:flex items-center gap-10">
                         <ul className="flex items-center gap-8 font-bold text-sm tracking-widest uppercase">
-                                     <li>
+                            <li>
                                 <Link
                                     to="/"
                                     className="relative text-zinc-900 dark:text-white font-bold uppercase tracking-widest after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-black dark:after:bg-white after:transition-all after:duration-300 hover:after:w-full"
@@ -48,21 +48,29 @@ export default function Header() {
                                     Inicio
                                 </Link>
                             </li>
-                                                     <li>
-                            <Link
-                                to="/login"
-                                className="block py-4 border-b border-zinc-100 dark:border-zinc-800"
-                                onClick={() => setMobileOpen(false)}
-                            >
-                                login
-                            </Link>
-                        </li>
+                            <li>
+                                <Link
+                                    to="#"
+                                    className="relative text-zinc-900 dark:text-white font-bold uppercase tracking-widest after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-black dark:after:bg-white after:transition-all after:duration-300 hover:after:w-full"
+                                >
+                                    Calendario
+                                </Link>
+                            </li>
                             <li>
                                 <Link
                                     to="/reglamento"
                                     className="relative text-zinc-900 dark:text-white font-bold uppercase tracking-widest after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-black dark:after:bg-white after:transition-all after:duration-300 hover:after:w-full"
                                 >
                                     Reglamento
+                                </Link>
+                            </li>
+
+                            <li>
+                                <Link
+                                    to="/login  "
+                                    className="relative text-zinc-900 dark:text-white font-bold uppercase tracking-widest after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-black dark:after:bg-white after:transition-all after:duration-300 hover:after:w-full"
+                                >
+                                    Login
                                 </Link>
                             </li>
 
@@ -104,7 +112,7 @@ export default function Header() {
             {mobileOpen && (
                 <div className="md:hidden border-t border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900">
                     <ul className="flex flex-col p-4 font-bold text-lg tracking-widest uppercase">
-                               <li>
+                        <li>
                             <Link
                                 to="/"
                                 className="block py-4 border-b border-zinc-100 dark:border-zinc-800"
@@ -113,7 +121,7 @@ export default function Header() {
                                 Inicio
                             </Link>
                         </li>
-                
+
                         <li>
                             <Link
                                 to="/reglamento"
