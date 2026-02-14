@@ -23,10 +23,9 @@ function App() {
 
           <Route path="/" element={<Home />} />
           <Route path="/noticia/:id" element={<NewDetails />} />
-
+          <Route path="/reglamento" element={<Players />} />
         </Route>
         {/* <Route path="/" element={<Main />} /> */}
-        <Route path="/reglamento" element={<Players />} />
         {/* <Route path="/noticia/:id" element={<NewDetails />} /> */}
         <Route path="/login" element={<Login />} />
         <Route path="/login" element={<Login />} />

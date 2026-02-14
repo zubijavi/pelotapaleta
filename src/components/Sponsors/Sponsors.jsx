@@ -14,7 +14,7 @@ const sponsorsData = [
         descripcion:
             "Artículos deportivos para la práctica de la pelota paleta y padel.",
         imagen:
-            "https://d22fxaf9t8d39k.cloudfront.net/3b36578f62c62de3ff415bd8149c27dbd3e60a10c5820ed4565e2832cc75a2e2270088.png",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3P7pykSxszcIl4EPnVXHyy6x7oJHY2q0MlA&s",
         sitio: "https://www.dabberfronton.com.ar/",
     }];
 
@@ -27,7 +27,9 @@ export default function Sponsors() {
             {/* <div className="w-24 h-2 bg-black dark:bg-white"></div> */}
 
             <section 
-            className="lg:col-span-2 sticky top-24 self-start flex flex-col gap-8">
+            className="lg:col-span-2 top-24 self-start flex flex-row lg:flex-col gap-4"
+            // className="lg:col-span-2 top-24 self-start flex flex-col gap-8"
+            >
             {/* // className="border grid grid-cols-1 md:grid-cols-2 gap-6 mb-16 max-w-4xl mx-auto px-4 justify-items-center"> */}
                 {sponsorsData.map((sponsor, index) => (
                     <div

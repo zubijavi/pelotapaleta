@@ -97,16 +97,6 @@ export default function Header() {
                     <ul className="flex flex-col p-4 font-bold text-lg tracking-widest uppercase">
                         <li>
                             <Link
-                                to="/"
-                                className="block py-4 border-b border-zinc-100 dark:border-zinc-800"
-                                onClick={() => setMobileOpen(false)}
-                            >
-                                Inicio
-                            </Link>
-                        </li>
-
-                        <li>
-                            <Link
                                 to="/reglamento"
                                 className="block py-4 border-b border-zinc-100 dark:border-zinc-800"
                                 onClick={() => setMobileOpen(false)}

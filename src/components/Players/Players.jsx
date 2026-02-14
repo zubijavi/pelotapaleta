@@ -70,9 +70,9 @@ const Players = () => {
                   <th className="px-6 py-4 text-xs font-black uppercase">
                     Trinquete
                   </th>
-                  <th className="px-6 py-4 text-xs font-black uppercase">
+                  {/* <th className="px-6 py-4 text-xs font-black uppercase">
                     Estado
-                  </th>
+                  </th> */}
                   {/* <th className="px-6 py-4 text-xs font-black uppercase text-right">
                     Actions
                   </th> */}
@@ -103,9 +103,9 @@ const Players = () => {
                   >
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-4">
-                        <div className="size-12 rounded-full border bg-slate-200 flex items-center justify-center font-bold">
+                        {/* <div className="size-12 rounded-full border bg-slate-200 flex items-center justify-center font-bold">
                           {player.nombre?.charAt(0)}
-                        </div>
+                        </div> */}
                         <div>
                           <p className="text-sm font-bold">
                             {player.nombre}
@@ -129,12 +129,12 @@ const Players = () => {
                       </span>
                     </td>
 
-                    <td className="px-6 py-4">
+                    {/* <td className="px-6 py-4">
                       <div className="flex items-center gap-2">
                         <span className="size-2 rounded-full bg-emerald-500" />
                         <span className="text-xs">Activo</span>
                       </div>
-                    </td>
+                    </td> */}
 
                     {/* <td className="px-6 py-4 text-right">
                       <button className="text-xs font-bold text-primary hover:underline">

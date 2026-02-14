@@ -1,6 +1,5 @@
 import { Outlet } from "react-router-dom";
 import Sponsors from "../components/Sponsors/Sponsors";
-import Aside from "../components/Aside/Aside";
 
 const MainLayout = () => {
   return (

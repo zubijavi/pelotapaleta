@@ -79,7 +79,7 @@ const Main = () => {
                 </div>
 
                 {/* 📰 DOS SIGUIENTES */}
-                <div className="lg:col-span-4 flex flex-col justify-center gap-6">
+                <div className="lg:col-span-4 grid grid-cols-2 lg:grid-cols-1 gap-4 lg:gap-6">
                     {eventos.slice(1, 3).map(evento => (
                         <Link
                             key={evento.id}
@@ -108,11 +108,12 @@ const Main = () => {
 
             {/* 📰 RESTO DE NOTICIAS */}
             <div className="mt-10">
-                <h3 className="font-display font-black text-xl uppercase border-b-2 border-black pb-2 mb-6">
+                <h3 className="hidden md:block font-display text-right font-black text-m border-b border-black pb-1 mb-2">
+                {/* <h3 className="font-display text-right font-black text-m border-b border-black pb-1 mb-2 "> */}
                     Más Noticias
                 </h3>
+                <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {eventos.slice(3, visibleCount + 3).map(evento => (
                         <Link key={evento.id} to={`/noticia/${evento.id}`} className="group">
                             <p className="text-xs text-zinc-500 uppercase">
