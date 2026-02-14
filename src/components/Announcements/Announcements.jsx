@@ -12,12 +12,7 @@ export default function Announcements() {
 
                 {/* Marquee */}
                 <div className="marquee flex gap-8 whitespace-nowrap">
-                    <span>SITIO EN CONSTRUCCION</span>
-                    <span className="opacity-50">•</span>
-                     <span>SITIO EN CONSTRUCCION</span>
-                    <span className="opacity-50">•</span>
-                     <span>SITIO EN CONSTRUCCION</span>
-                    <span className="opacity-50">•</span>
+                    <span>28/02 Selectivo Damas</span>
 
                     {/* <span className="opacity-50">•</span>
           <span>Inscripciones abiertas para la Escuela de Menores 2024.</span>

@@ -112,7 +112,7 @@ const Main = () => {
                 {/* <h3 className="font-display text-right font-black text-m border-b border-black pb-1 mb-2 "> */}
                     Más Noticias
                 </h3>
-                <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
 
                     {eventos.slice(3, visibleCount + 3).map(evento => (
                         <Link key={evento.id} to={`/noticia/${evento.id}`} className="group">
