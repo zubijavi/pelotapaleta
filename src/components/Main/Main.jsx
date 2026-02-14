@@ -43,43 +43,108 @@ const Main = () => {
     // Obtener la última noticia (la más reciente)
     const ultimaNoticia = eventos.length > 0 ? eventos[0] : null;
 
-
-    // Mostrar más noticias   
     const handleVerMas = () => {
-        setVisibleCount((prev) => prev + 2); // Muestra 4 más cada vez
+        setVisibleCount(prev => prev + 2);
     };
-
     return (
-        <main className="w-full px-4 lg:px-8 py-12">
-                <div className="lg:col-span-8 group cursor-pointer max-h-[80vh] overflow-y-auto pr-4 scroll-smooth">
+        <main className="w-full px-4 lg:px-8">
 
-                {ultimaNoticia ? (
-                    <>
-                        <span className="inline-block bg-black text-white text-[10px] px-2 py-1 uppercase font-black mb-4">
-                            {formatFecha(ultimaNoticia.fecha)}
-                        </span>
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+                {/* 📰 NOTICIA PRINCIPAL */}
+                <div className="lg:col-span-8 group">
+                    {ultimaNoticia ? (
                         <Link to={`/noticia/${ultimaNoticia.id}`}>
-                            <h1 className="text-4xl lg:text-6xl font-display font-black leading-tight mb-4 uppercase tracking-tighter">
+                            <span className="inline-block bg-black text-white text-[10px] px-2 py-1 uppercase font-black mb-3">
+                                {formatFecha(ultimaNoticia.fecha)}
+                            </span>
+
+                            <h1 className="text-2xl lg:text-4xl font-display font-black leading-tight mb-4 uppercase tracking-tighter">
                                 {ultimaNoticia.titulo}
                             </h1>
+
+                            <div className="overflow-hidden bg-zinc-200 dark:bg-zinc-800 aspect-video flex items-center justify-center">
+                                <img
+                                    alt={ultimaNoticia.titulo}
+                                    className=" 
+                                    h-52 lg:h-105
+                                    transition-transform duration-700 group-hover:scale-105"
+                                    src={ultimaNoticia.imagenes?.[0] || noticiaDefault}
+                                />
+                            </div>
                         </Link>
-                        <div className="overflow-hidden mb-6 bg-zinc-200 dark:bg-zinc-800 aspect-video">
-                            <img
-                                alt={ultimaNoticia.titulo}
-                                className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105 bg-zinc-200"
-                                src={ultimaNoticia.imagenes?.[0] || noticiaDefault}
-                            />
-                        </div>
-                        <div className="max-w-3xl">
-                            <p className="text-zinc-600 dark:text-zinc-400 text-lg leading-relaxed">
-                                {ultimaNoticia.descripcion}
+                    ) : (
+                        <p>No hay noticias disponibles.</p>
+                    )}
+                </div>
+
+                {/* 📰 DOS SIGUIENTES */}
+                <div className="lg:col-span-4 flex flex-col justify-center gap-6">
+                    {eventos.slice(1, 3).map(evento => (
+                        <Link
+                            key={evento.id}
+                            to={`/noticia/${evento.id}`}
+                            className="group"
+                        >
+
+                            <p className="text-xs text-zinc-500 uppercase">
+                                {formatFecha(evento.fecha)}
                             </p>
-                        </div>
-                    </>
-                ) : (
-                    <p>No hay noticias disponibles.</p>
+
+                            <h3 className="font-bold text-sm leading-snug">
+                                {evento.titulo}
+                            </h3>
+                            <div className="overflow-hidden bg-zinc-200 dark:bg-zinc-800 aspect-video mb-2">
+                                <img
+                                    src={evento.imagenes?.[0] || noticiaDefault}
+                                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                />
+                            </div>
+                        </Link>
+                    ))}
+                </div>
+
+            </div>
+
+            {/* 📰 RESTO DE NOTICIAS */}
+            <div className="mt-10">
+                <h3 className="font-display font-black text-xl uppercase border-b-2 border-black pb-2 mb-6">
+                    Más Noticias
+                </h3>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {eventos.slice(3, visibleCount + 3).map(evento => (
+                        <Link key={evento.id} to={`/noticia/${evento.id}`} className="group">
+                            <p className="text-xs text-zinc-500 uppercase">
+                                {formatFecha(evento.fecha)}
+                            </p>
+
+                            <h4 className="font-bold text-sm leading-snug">
+                                {evento.titulo}
+                            </h4>
+
+                            <div className="overflow-hidden bg-zinc-200 aspect-video mb-2 flex items-center justify-center">
+                                <img
+                                    src={evento.imagenes?.[0] || noticiaDefault}
+                                    className="max-h-40 w-auto object-cover transition-transform duration-500 group-hover:scale-105"
+                                />
+                            </div>
+
+
+                        </Link>
+                    ))}
+                </div>
+
+                {visibleCount + 3 < eventos.length && (
+                    <button
+                        onClick={handleVerMas}
+                        className="mt-6 text-sm font-bold uppercase text-blue-600"
+                    >
+                        Ver más noticias
+                    </button>
                 )}
             </div>
+
         </main>
     );
 };

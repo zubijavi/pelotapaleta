@@ -34,13 +34,13 @@ const Aside = () => {
     };
 
     return (
-        <aside className="lg:col-span-3 sticky top-24 self-start flex flex-col gap-8">
+        <aside className="lg:col-span-2 sticky top-24 self-start flex flex-col gap-8">
 
             <h3 className="font-display font-black text-xl uppercase border-b-2 border-black pb-2">
                 Últimas Noticias
             </h3>
 
-            {eventos.slice(0, visibleCount).map(evento => (
+            {eventos.slice(1, visibleCount + 1).map(evento => (
 
                 <Link key={evento.id} to={`/noticia/${evento.id}`} className="flex gap-4">
 
@@ -65,7 +65,7 @@ const Aside = () => {
 
             ))}
 
-            {visibleCount < eventos.length && (
+            {visibleCount < eventos.length - 1 && (
                 <button
                     onClick={handleVerMas}
                     className="text-sm font-bold uppercase text-blue-600 self-start"

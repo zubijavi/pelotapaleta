@@ -21,12 +21,13 @@ export default function Header() {
     };
 
     return (
-        <header className="sticky top-0 z-50 bg-white/95 dark:bg-zinc-900/95 backdrop-blur-md border-b border-zinc-200 dark:border-zinc-800">
+        <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-zinc-200 dark:border-zinc-800">
             <div className="container mx-auto px-4 lg:px-8">
                 <div className="flex items-center justify-between h-24 lg:h-32">
                     {/* Logo */}
                     <div className="shrink-0">
                         <Link to="/">
+                            {/* <h1>PELOTA PALETA ROSARIO</h1> */}
                             <button onClick={scrollToTop}>
                                 <img
                                     src={logo}
@@ -40,14 +41,6 @@ export default function Header() {
                     {/* Nav Desktop */}
                     <nav className="hidden md:flex items-center gap-10">
                         <ul className="flex items-center gap-8 font-bold text-sm tracking-widest uppercase">
-                            <li>
-                                <Link
-                                    to="/"
-                                    className="relative text-zinc-900 dark:text-white font-bold uppercase tracking-widest after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-black dark:after:bg-white after:transition-all after:duration-300 hover:after:w-full"
-                                >
-                                    Inicio
-                                </Link>
-                            </li>
                             <li>
                                 <Link
                                     to="#"
@@ -64,16 +57,6 @@ export default function Header() {
                                     Reglamento
                                 </Link>
                             </li>
-
-                            <li>
-                                <Link
-                                    to="/login  "
-                                    className="relative text-zinc-900 dark:text-white font-bold uppercase tracking-widest after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-black dark:after:bg-white after:transition-all after:duration-300 hover:after:w-full"
-                                >
-                                    Login
-                                </Link>
-                            </li>
-
                             <li>
                                 <a href="#footer" className="relative text-zinc-900 dark:text-white font-bold uppercase tracking-widest after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-black dark:after:bg-white after:transition-all after:duration-300 hover:after:w-full">
                                     Contacto

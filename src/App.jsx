@@ -5,7 +5,6 @@ import MainLayout from "./layouts/MainLayout";
 import Home from "./components/Main/Main.jsx";
 import Footer from "./components/Footer/Footer.jsx";
 import Announcements from "./components/Announcements/Announcements.jsx";
-import Sponsors from "./components/Sponsors/Sponsors.jsx";
 import Players from "./components/Players/Players.jsx";
 import NewDetails from "./components/NewDetails/NewDetails.jsx";
 import Login from "./components/Login/Login";
@@ -41,7 +40,6 @@ function App() {
           }
         />
       </Routes>
-      <Sponsors />
       <Footer />
     </Router>
   );

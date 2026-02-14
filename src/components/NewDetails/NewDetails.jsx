@@ -57,7 +57,7 @@ const NewDetails = () => {
     }
 
     return (
-        <main className="container mx-auto px-4 lg:px-8 py-16 max-w-4xl">
+        <main className="container mx-auto px-4 lg:px-8 max-w-4xl">
 
 
             <span className="inline-block bg-black text-white text-[10px] px-2 py-1 uppercase font-black mb-4">

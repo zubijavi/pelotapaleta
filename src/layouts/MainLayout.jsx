@@ -1,4 +1,5 @@
 import { Outlet } from "react-router-dom";
+import Sponsors from "../components/Sponsors/Sponsors";
 import Aside from "../components/Aside/Aside";
 
 const MainLayout = () => {
@@ -8,12 +9,12 @@ const MainLayout = () => {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
 
         {/* CONTENIDO CENTRAL */}
-        <div className="lg:col-span-9">
+        <div className="lg:col-span-10">
           <Outlet />
         </div>
 
         {/* ASIDE FIJO */}
-        <Aside />
+        <Sponsors />
 
       </div>
 
