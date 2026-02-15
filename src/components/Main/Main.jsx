@@ -79,7 +79,8 @@ const Main = () => {
                 </div>
 
                 {/* 📰 DOS SIGUIENTES */}
-                <div className="lg:col-span-4 grid grid-cols-2 lg:grid-cols-1 gap-4 lg:gap-6">
+                <div className="lg:col-span-4 grid grid-cols-2 lg:grid-cols-1 gap-4 lg:gap-6 place-items-center">
+                {/* <div className="border lg:col-span-4 grid grid-cols-2 lg:grid-cols-1 gap-4 lg:gap-6"> */}
                     {eventos.slice(1, 3).map(evento => (
                         <Link
                             key={evento.id}
@@ -87,17 +88,17 @@ const Main = () => {
                             className="group"
                         >
 
-                            <p className="text-xs text-zinc-500 uppercase">
+                            <p className="text-right text-s text-zinc-600 uppercase">
                                 {formatFecha(evento.fecha)}
                             </p>
 
-                            <h3 className="font-bold text-sm leading-snug">
+                            <h3 className="font-bold text-m leading-snug">
                                 {evento.titulo}
                             </h3>
                             <div className="overflow-hidden bg-zinc-200 dark:bg-zinc-800 aspect-video mb-2">
                                 <img
                                     src={evento.imagenes?.[0] || noticiaDefault}
-                                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                    className=" object-cover transition-transform duration-500 group-hover:scale-105"
                                 />
                             </div>
                         </Link>
@@ -110,7 +111,7 @@ const Main = () => {
             <div className="mt-10">
                 <h3 className="hidden md:block font-display text-right font-black text-m border-b border-black pb-1 mb-2">
                 {/* <h3 className="font-display text-right font-black text-m border-b border-black pb-1 mb-2 "> */}
-                    Más Noticias
+                    
                 </h3>
                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
 
@@ -141,7 +142,7 @@ const Main = () => {
                         onClick={handleVerMas}
                         className="mt-6 text-sm font-bold uppercase text-blue-600"
                     >
-                        Ver más noticias
+                        Ver más
                     </button>
                 )}
             </div>

@@ -27,8 +27,9 @@ export default function Header() {
                     {/* Logo */}
                     <div className="shrink-0">
                         <Link to="/">
-                            <button onClick={scrollToTop}>
-                            <h1 className="text-4xl">PELOTA PALETA ROSARIO</h1>
+                            <button onClick={scrollToTop} className="cursor-pointer">
+                            <h1 className="text-left text-xl lg:text-4xl">PELOTA PALETA</h1>
+                            <h5 className="text-left text-l lg:text-xl">Rosario</h5>
                                 {/* <img
                                     src={logo}
                                     alt="Rosario Pelota Pelota Logo"

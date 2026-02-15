@@ -97,12 +97,7 @@ const NewDetails = () => {
 
   return (
     <main className="container mx-auto px-4 lg:px-8 max-w-4xl py-10">
-      <Link
-        to="/"
-        className="inline-block mb-6 text-xs font-bold uppercase underline"
-      >
-        ← Volver
-      </Link>
+
 
       <span className="inline-block bg-black text-white text-[10px] px-2 py-1 uppercase font-black mb-4">
         {formatFecha(noticia.fecha)}
@@ -227,6 +222,15 @@ const NewDetails = () => {
           </div>
         </div>
       )}
+      {/* BOTON VOLVER */}
+      <div className="text-right">
+        <Link
+          to="/"
+          className="text-right text-m font-bold uppercase underline"
+        >
+          ← Volver
+        </Link>
+      </div>
     </main>
   );
 };
