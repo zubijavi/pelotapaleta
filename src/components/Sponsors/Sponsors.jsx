@@ -37,7 +37,7 @@ export default function Sponsors() {
                         className="group pt-4 w-full max-w-sm text-center"
                     >
                         <div className="bg-gray-100 dark:bg-gray-800 aspect-350 flex items-center justify-center p-4 mb-4 overflow-hidden">
-                            <a href={sponsor.sitio}>
+                            <a href={sponsor.sitio}  target="_blank"rel="noopener noreferrer">
                                 <img
                                     
                                     src={sponsor.imagen}

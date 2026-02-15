@@ -41,9 +41,9 @@ const Players = () => {
   }, [players, search]);
 
   return (
-    <main className="flex-1 flex flex-col min-w-0 bg-background-light dark:bg-background-dark">
-      <div className="p-8 max-w-350 mx-auto w-full">
-        
+    <main className="flex-1 flex flex-col min-w-0 bg-background-light">
+      <div className="">
+
         {/* Heading + Search */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
           <div>
@@ -58,7 +58,7 @@ const Players = () => {
           {/* ✅ Barra de búsqueda */}
           <div className="w-full md:w-80">
             <div className="relative">
-                    <input
+              <input
                 type="text"
                 placeholder="Buscar jugador..."
                 value={search}
@@ -86,64 +86,65 @@ const Players = () => {
 
         {/* Table */}
         <div className="bg-white dark:bg-[#1b2826]/30 rounded-2xl border border-slate-200 dark:border-[#395651] overflow-hidden shadow-xl">
-          <div className="overflow-x-auto">
-            <table className="w-full text-left">
-              <thead>
-                <tr className="bg-slate-50 dark:bg-[#1b2826] border-b">
-                  <th className="px-6 py-4 text-xs font-black uppercase">Nombre</th>
-                  <th className="px-6 py-4 text-xs font-black uppercase">Frontón</th>
-                  <th className="px-6 py-4 text-xs font-black uppercase">Trinquete</th>
-                </tr>
-              </thead>
-
-              <tbody className="divide-y divide-slate-100 dark:divide-[#395651]/50">
-                
-                {loading && (
-                  <tr>
-                    <td colSpan="3" className="px-6 py-8 text-center">
-                      Cargando jugadores...
-                    </td>
+          <div className="overflow-x-auto touch-pan-x">
+            <table className="w-full text-left whitespace-nowrap">
+                <thead>
+                  <tr className="bg-slate-50 dark:bg-[#1b2826] border-b">
+                    <th className="px-3 md:px-6 py-3 md:py-4 text-xs font-black uppercase">Nombre</th>
+                    <th className="px-3 md:px-6 py-3 md:py-4 text-xs font-black uppercase">Frontón</th>
+                    <th className="px-3 md:px-6 py-3 md:py-4 text-xs font-black uppercase">Trinquete</th>
                   </tr>
-                )}
+                </thead>
 
-                {!loading && filteredPlayers.length === 0 && (
-                  <tr>
-                    <td colSpan="3" className="px-6 py-8 text-center">
-                      No se encontraron jugadores.
-                    </td>
-                  </tr>
-                )}
+                <tbody className="divide-y divide-slate-100 dark:divide-[#395651]/50">
 
-                {filteredPlayers.map((player) => (
-                  <tr
-                    key={player.id}
-                    className="group hover:bg-slate-50 dark:hover:bg-primary/5 transition-colors"
-                  >
-                    <td className="px-6 py-4">
-                      <p className="text-sm font-bold">
-                        {player.nombre}
-                      </p>
-                    </td>
+                  {loading && (
+                    <tr>
+                      <td colSpan="3" className="px-6 py-8 text-center">
+                        Cargando jugadores...
+                      </td>
+                    </tr>
+                  )}
 
-                    <td className="px-6 py-4">
-                      <span className="inline-flex px-3 py-1 rounded-lg bg-slate-100 text-xs font-bold">
-                        {player.categoriaFronton || "-"}
-                      </span>
-                    </td>
+                  {!loading && filteredPlayers.length === 0 && (
+                    <tr>
+                      <td colSpan="3" className="px-3 md:px-6 py-3 md:py-4">
+                        No se encontraron jugadores.
+                      </td>
+                    </tr>
+                  )}
 
-                    <td className="px-6 py-4">
-                      <span className="inline-flex px-3 py-1 rounded-lg bg-primary/10 text-primary text-xs font-bold">
-                        {player.categoriaTrinquete || "-"}
-                      </span>
-                    </td>
-                  </tr>
-                ))}
+                  {filteredPlayers.map((player) => (
+                    <tr
+                      key={player.id}
+                      className="group hover:bg-slate-50 dark:hover:bg-primary/5 transition-colors"
+                    >
+                      <td className="px-3 md:px-6 py-3 md:py-4">
+                        <p className="text-xs md:text-sm font-bold">
+                          {player.nombre}
+                        </p>
+                      </td>
 
-              </tbody>
-            </table>
+                      <td className="px-3 md:px-6 py-3 md:py-4">
+                        <span className="inline-flex px-2 md:px-3 py-1 rounded-lg text-[10px] md:text-xs font-bold">
+                          {player.categoriaFronton || "-"}
+                        </span>
+                      </td>
+
+                      <td className="px-3 md:px-6 py-3 md:py-4">
+                        <span className="inline-flex px-2 md:px-3 py-1 rounded-lg text-[10px] md:text-xs font-bold">
+
+                          {player.categoriaTrinquete || "-"}
+                        </span>
+                      </td>
+                    </tr>
+                  ))}
+
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
-      </div>
     </main>
   );
 };

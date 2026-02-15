@@ -28,8 +28,8 @@ export default function Header() {
                     <div className="shrink-0">
                         <Link to="/">
                             <button onClick={scrollToTop} className="cursor-pointer">
-                            <h1 className="text-left text-xl lg:text-4xl">PELOTA PALETA</h1>
-                            <h5 className="text-left text-l lg:text-xl">Rosario</h5>
+                                <h1 className="text-left text-xl lg:text-3xl">PELOTA PALETA</h1>
+                                <h5 className="text-left text-l lg:text-xl">Rosario</h5>
                                 {/* <img
                                     src={logo}
                                     alt="Rosario Pelota Pelota Logo"
@@ -99,7 +99,9 @@ export default function Header() {
                         <li>
                             <Link
                                 to="/reglamento"
-                                className="block py-4 border-b border-zinc-100 dark:border-zinc-800"
+                                // className="block py-4 border-b border-zinc-100 dark:border-zinc-800"
+                                className="relative text-zinc-900 dark:text-white font-bold uppercase tracking-widest after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-black dark:after:bg-white after:transition-all after:duration-300 hover:after:w-full"
+
                                 onClick={() => setMobileOpen(false)}
                             >
                                 Reglamento
@@ -107,7 +109,11 @@ export default function Header() {
                         </li>
 
                         <li>
-                            <a href="#footer" className="relative text-zinc-900 dark:text-white font-bold uppercase tracking-widest after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-black dark:after:bg-white after:transition-all after:duration-300 hover:after:w-full">
+                            <a href="#footer"
+                                className="relative text-zinc-900 dark:text-white font-bold uppercase tracking-widest after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-black dark:after:bg-white after:transition-all after:duration-300 hover:after:w-full"
+                                onClick={() => setMobileOpen(false)}
+                                
+                                >
                                 Contacto
                             </a>
                         </li>

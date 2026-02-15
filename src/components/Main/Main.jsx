@@ -95,10 +95,14 @@ const Main = () => {
                             <h3 className="font-bold text-m leading-snug">
                                 {evento.titulo}
                             </h3>
-                            <div className="overflow-hidden bg-zinc-200 dark:bg-zinc-800 aspect-video mb-2">
+                            {/* <div className="overflow-hidden bg-zinc-200 dark:bg-zinc-800 aspect-video mb-2"> */}
+                            <div className="overflow-hidden bg-zinc-200 aspect-video mb-2 flex items-center justify-center">
+                            
                                 <img
                                     src={evento.imagenes?.[0] || noticiaDefault}
                                     className=" object-cover transition-transform duration-500 group-hover:scale-105"
+
+                                    // className=" object-cover transition-transform duration-500 group-hover:scale-105"
                                 />
                             </div>
                         </Link>
