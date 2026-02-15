@@ -6,13 +6,14 @@ export default function Announcements() {
             <div className="container mx-auto px-4 flex items-center gap-4 text-xs font-bold uppercase tracking-widest">
 
                 {/* Label */}
-                {/* <span className="bg-white text-black px-2 py-0.5 whitespace-nowrap">
-          Último Momento
-        </span> */}
+                <span className="bg-white text-black px-2 py-0.5 whitespace-nowrap">
+                 Febrero
+                </span>
 
                 {/* Marquee */}
-                <div className="marquee flex gap-8 whitespace-nowrap">
-                    <span>28/02 Selectivo Damas</span>
+                <div className="flex gap-8 whitespace-nowrap">
+                    {/* <span className="opacity-50">•</span> */}
+                    <span>• Selectivo Damas</span>
 
                     {/* <span className="opacity-50">•</span>
           <span>Inscripciones abiertas para la Escuela de Menores 2024.</span>

@@ -27,13 +27,13 @@ export default function Header() {
                     {/* Logo */}
                     <div className="shrink-0">
                         <Link to="/">
-                            {/* <h1>PELOTA PALETA ROSARIO</h1> */}
                             <button onClick={scrollToTop}>
-                                <img
+                            <h1 className="text-4xl">PELOTA PALETA ROSARIO</h1>
+                                {/* <img
                                     src={logo}
                                     alt="Rosario Pelota Pelota Logo"
                                     className="h-30 lg:h-40 w-auto cursor-pointer"
-                                />
+                                /> */}
                             </button>
                         </Link>
                     </div>

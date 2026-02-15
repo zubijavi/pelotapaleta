@@ -21,17 +21,21 @@ export default function Admin() {
   ======================= */
   const [eventos, setEventos] = useState([]);
   const [editEventoId, setEditEventoId] = useState(null);
+
   const [imagenesFiles, setImagenesFiles] = useState([]);
+  const [imagenesExistentes, setImagenesExistentes] = useState([]);
+
   const [subiendo, setSubiendo] = useState(false);
 
   const [eventoForm, setEventoForm] = useState({
     titulo: "",
     descripcion: "",
-    fecha: ""
+    fecha: "",
+    planilla: ""
   });
 
   /* =======================
-     JUGADORES / PLAYERS
+     JUGADORES
   ======================= */
   const [jugadores, setJugadores] = useState([]);
   const [editJugadorId, setEditJugadorId] = useState(null);
@@ -46,6 +50,7 @@ export default function Admin() {
      UTILIDAD FECHA
   ======================= */
   const formatFecha = (fechaString) => {
+    if (!fechaString) return "";
     const fecha = new Date(fechaString);
     return `${String(fecha.getDate()).padStart(2, "0")}/${String(
       fecha.getMonth() + 1
@@ -58,6 +63,7 @@ export default function Admin() {
   const fetchEventos = async () => {
     const snap = await getDocs(collection(db, "eventos"));
     const data = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+
     data.sort((a, b) => new Date(b.fecha) - new Date(a.fecha));
     setEventos(data);
   };
@@ -103,16 +109,18 @@ export default function Admin() {
     setSubiendo(true);
 
     try {
-      let imagenesUrls = [];
+      let imagenesUrls = [...imagenesExistentes];
 
       if (imagenesFiles.length > 0) {
-        imagenesUrls = await subirImagenesEvento();
+        const nuevasImagenes = await subirImagenesEvento();
+        imagenesUrls = [...imagenesExistentes, ...nuevasImagenes];
       }
 
       const data = {
         titulo: eventoForm.titulo,
         descripcion: eventoForm.descripcion,
         fecha: eventoForm.fecha,
+        planilla: eventoForm.planilla || "",
         imagenes: imagenesUrls,
         createdAt: serverTimestamp()
       };
@@ -120,13 +128,21 @@ export default function Admin() {
       if (editEventoId) {
         await updateDoc(doc(db, "eventos", editEventoId), data);
         setEditEventoId(null);
+        setImagenesExistentes([]);
       } else {
         await addDoc(collection(db, "eventos"), data);
       }
 
-      setEventoForm({ titulo: "", descripcion: "", fecha: "" });
+      setEventoForm({
+        titulo: "",
+        descripcion: "",
+        fecha: "",
+        planilla: ""
+      });
+
       setImagenesFiles([]);
       fetchEventos();
+
     } catch (err) {
       console.error("Error guardando evento:", err);
     } finally {
@@ -134,13 +150,18 @@ export default function Admin() {
     }
   };
 
-  const handleEventoEdit = (e) => {
-    setEditEventoId(e.id);
+  const handleEventoEdit = (evento) => {
+    setEditEventoId(evento.id);
+
     setEventoForm({
-      titulo: e.titulo,
-      descripcion: e.descripcion,
-      fecha: e.fecha
+      titulo: evento.titulo,
+      descripcion: evento.descripcion,
+      fecha: evento.fecha,
+      planilla: evento.planilla || ""
     });
+
+    setImagenesExistentes(evento.imagenes || []);
+    setImagenesFiles([]);
   };
 
   const handleEventoDelete = async (id) => {
@@ -148,6 +169,24 @@ export default function Admin() {
       await deleteDoc(doc(db, "eventos", id));
       fetchEventos();
     }
+  };
+
+  /* =======================
+     Quitar imagen existente
+  ======================= */
+  const eliminarImagenExistente = (index) => {
+    const nuevas = [...imagenesExistentes];
+    nuevas.splice(index, 1);
+    setImagenesExistentes(nuevas);
+  };
+
+  /* =======================
+     Quitar imagen nueva
+  ======================= */
+  const eliminarImagenNueva = (index) => {
+    const nuevas = [...imagenesFiles];
+    nuevas.splice(index, 1);
+    setImagenesFiles(nuevas);
   };
 
   /* =======================
@@ -175,12 +214,12 @@ export default function Admin() {
     fetchJugadores();
   };
 
-  const handleJugadorEdit = (j) => {
-    setEditJugadorId(j.id);
+  const handleJugadorEdit = (jugador) => {
+    setEditJugadorId(jugador.id);
     setJugadorForm({
-      nombre: j.nombre,
-      categoriaFronton: j.categoriaFronton,
-      categoriaTrinquete: j.categoriaTrinquete
+      nombre: jugador.nombre,
+      categoriaFronton: jugador.categoriaFronton,
+      categoriaTrinquete: jugador.categoriaTrinquete
     });
   };
 
@@ -197,42 +236,114 @@ export default function Admin() {
   return (
     <div className="max-w-6xl mx-auto p-6 space-y-20">
 
-      {/* ================= NOTICIAS ================= */}
+      {/* ================= EVENTOS ================= */}
       <section>
         <h2 className="text-2xl font-black uppercase mb-6">
           Noticias / Eventos
         </h2>
 
-        {/* FORM */}
         <form onSubmit={handleEventoSubmit} className="grid gap-4 mb-10">
+
           <input
+            className="border p-2"
             placeholder="Título"
             value={eventoForm.titulo}
-            onChange={e => setEventoForm({ ...eventoForm, titulo: e.target.value })}
+            onChange={e =>
+              setEventoForm({ ...eventoForm, titulo: e.target.value })
+            }
             required
           />
 
           <textarea
+            className="border p-2"
             rows={5}
-            placeholder="Descripción (Enter = nuevo párrafo)"
+            placeholder="Descripción"
             value={eventoForm.descripcion}
-            onChange={e => setEventoForm({ ...eventoForm, descripcion: e.target.value })}
+            onChange={e =>
+              setEventoForm({ ...eventoForm, descripcion: e.target.value })
+            }
             required
           />
 
           <input
+            className="border p-2"
             type="date"
             value={eventoForm.fecha}
-            onChange={e => setEventoForm({ ...eventoForm, fecha: e.target.value })}
+            onChange={e =>
+              setEventoForm({ ...eventoForm, fecha: e.target.value })
+            }
             required
           />
 
           <input
+            className="border p-2"
+            type="url"
+            placeholder="Link Google Sheets (opcional)"
+            value={eventoForm.planilla}
+            onChange={e =>
+              setEventoForm({ ...eventoForm, planilla: e.target.value })
+            }
+          />
+
+          <input
+            className="border p-2"
             type="file"
             multiple
             accept="image/*"
-            onChange={(e) => setImagenesFiles(Array.from(e.target.files))}
+            onChange={(e) =>
+              setImagenesFiles(Array.from(e.target.files))
+            }
           />
+
+          {/* ✅ Preview imágenes existentes */}
+          {imagenesExistentes.length > 0 && (
+            <div>
+              <p className="text-sm font-bold">Imágenes actuales</p>
+              <div className="flex gap-2 flex-wrap mt-2">
+                {imagenesExistentes.map((img, i) => (
+                  <div key={i} className="relative">
+                    <img
+                      src={img}
+                      alt=""
+                      className="w-20 h-20 object-cover border"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => eliminarImagenExistente(i)}
+                      className="absolute -top-2 -right-2 bg-red-600 text-white w-5 h-5 text-xs rounded-full"
+                    >
+                      ✕
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* ✅ Preview imágenes nuevas */}
+          {imagenesFiles.length > 0 && (
+            <div>
+              <p className="text-sm font-bold">Nuevas imágenes</p>
+              <div className="flex gap-2 flex-wrap mt-2">
+                {imagenesFiles.map((file, i) => (
+                  <div key={i} className="relative">
+                    <img
+                      src={URL.createObjectURL(file)}
+                      alt=""
+                      className="w-20 h-20 object-cover border"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => eliminarImagenNueva(i)}
+                      className="absolute -top-2 -right-2 bg-black text-white w-5 h-5 text-xs rounded-full"
+                    >
+                      ✕
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
 
           <button
             disabled={subiendo}
@@ -250,14 +361,22 @@ export default function Admin() {
         <div className="space-y-4">
           {eventos.map(e => (
             <div key={e.id} className="border p-4">
+
               <p className="text-xs font-bold uppercase">
                 {formatFecha(e.fecha)}
               </p>
+
               <p className="font-black text-lg">{e.titulo}</p>
 
               <p className="text-sm text-zinc-600 line-clamp-2">
                 {e.descripcion}
               </p>
+
+              {e.planilla && (
+                <p className="text-xs text-blue-600 font-bold mt-1">
+                  📊 Tiene planilla vinculada
+                </p>
+              )}
 
               {e.imagenes?.length > 0 && (
                 <div className="flex gap-2 mt-2">
@@ -265,6 +384,7 @@ export default function Admin() {
                     <img
                       key={i}
                       src={img}
+                      alt=""
                       className="w-16 h-16 object-cover border"
                     />
                   ))}
@@ -272,7 +392,9 @@ export default function Admin() {
               )}
 
               <div className="flex gap-4 mt-3">
-                <button onClick={() => handleEventoEdit(e)}>Editar</button>
+                <button onClick={() => handleEventoEdit(e)}>
+                  Editar
+                </button>
                 <button
                   className="text-red-600"
                   onClick={() => handleEventoDelete(e.id)}
@@ -285,38 +407,48 @@ export default function Admin() {
         </div>
       </section>
 
-      {/* ================= PLAYERS ================= */}
+      {/* ================= JUGADORES ================= */}
       <section>
         <h2 className="text-2xl font-black uppercase mb-6">
           Jugadores
         </h2>
 
-        {/* FORM */}
         <form
           onSubmit={handleJugadorSubmit}
           className="grid md:grid-cols-4 gap-4 mb-10"
         >
           <input
+            className="border p-2"
             placeholder="Nombre"
             value={jugadorForm.nombre}
-            onChange={e => setJugadorForm({ ...jugadorForm, nombre: e.target.value })}
-            required
-          />
-
-          <input
-            placeholder="Categoría Frontón"
-            value={jugadorForm.categoriaFronton}
             onChange={e =>
-              setJugadorForm({ ...jugadorForm, categoriaFronton: e.target.value })
+              setJugadorForm({ ...jugadorForm, nombre: e.target.value })
             }
             required
           />
 
           <input
+            className="border p-2"
+            placeholder="Categoría Frontón"
+            value={jugadorForm.categoriaFronton}
+            onChange={e =>
+              setJugadorForm({
+                ...jugadorForm,
+                categoriaFronton: e.target.value
+              })
+            }
+            required
+          />
+
+          <input
+            className="border p-2"
             placeholder="Categoría Trinquete"
             value={jugadorForm.categoriaTrinquete}
             onChange={e =>
-              setJugadorForm({ ...jugadorForm, categoriaTrinquete: e.target.value })
+              setJugadorForm({
+                ...jugadorForm,
+                categoriaTrinquete: e.target.value
+              })
             }
             required
           />
@@ -326,7 +458,6 @@ export default function Admin() {
           </button>
         </form>
 
-        {/* LISTADO */}
         <ul className="space-y-3">
           {jugadores.map(j => (
             <li
@@ -341,7 +472,9 @@ export default function Admin() {
               </div>
 
               <div className="flex gap-3">
-                <button onClick={() => handleJugadorEdit(j)}>Editar</button>
+                <button onClick={() => handleJugadorEdit(j)}>
+                  Editar
+                </button>
                 <button
                   className="text-red-600"
                   onClick={() => handleJugadorDelete(j.id)}
