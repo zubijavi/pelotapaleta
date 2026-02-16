@@ -56,13 +56,13 @@ const Main = () => {
                 <div className="lg:col-span-8 group">
                     {ultimaNoticia ? (
                         <Link to={`/noticia/${ultimaNoticia.id}`}>
-                            <span className="inline-block bg-black text-white text-[10px] px-2 py-1 uppercase font-black mb-3">
-                                {formatFecha(ultimaNoticia.fecha)}
-                            </span>
+                                <span className="inline-block bg-black text-white text-sm px-2 py-1 uppercase font-black ">
+                                    {formatFecha(ultimaNoticia.fecha)}
+                                </span>
 
-                            <h1 className="text-2xl lg:text-4xl font-display font-black leading-tight mb-4 uppercase tracking-tighter">
-                                {ultimaNoticia.titulo}
-                            </h1>
+                                <h1 className="text-center text-2xl lg:text-3xl font-display font-black leading-tight mb-4 uppercase tracking-tighter">
+                                    {ultimaNoticia.titulo}
+                                </h1>
 
                             <div className="overflow-hidden bg-zinc-200 dark:bg-zinc-800 aspect-video flex items-center justify-center">
                                 <img
@@ -113,51 +113,51 @@ const Main = () => {
             </div>
 
             {/* 📰 RESTO DE NOTICIAS */}
-                <button
-                    onClick={() => setMostrarMobile(!mostrarMobile)}
-                    className="md:hidden mt-5 mb-5 w-full text-sm font-bold uppercase text-blue-600"
-                >
-                    {mostrarMobile ? "Ocultar noticias" : "Ver más noticias"}
-                </button>
+            <button
+                onClick={() => setMostrarMobile(!mostrarMobile)}
+                className="md:hidden mt-5 mb-5 w-full text-sm font-bold uppercase text-blue-600"
+            >
+                {mostrarMobile ? "Ocultar noticias anteriores" : "Noticias anteriores"}
+            </button>
             <div className="flex items-center justify-center">
-  
+
                 {/* <div className="hidden md:grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6"> */}
-                    <div
-                        className={`grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 ${mostrarMobile ? "block" : "hidden"} md:grid `}
-                    >
-                        {eventos.slice(3, visibleCount + 3).map(evento => (
-                            <Link key={evento.id} to={`/noticia/${evento.id}`} className="group">
-                                <p className="text-xs text-zinc-500 uppercase">
-                                    {formatFecha(evento.fecha)}
-                                </p>
+                <div
+                    className={`grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 ${mostrarMobile ? "block" : "hidden"} md:grid `}
+                >
+                    {eventos.slice(3, visibleCount + 3).map(evento => (
+                        <Link key={evento.id} to={`/noticia/${evento.id}`} className="group">
+                            <p className="text-xs text-zinc-500 uppercase">
+                                {formatFecha(evento.fecha)}
+                            </p>
 
-                                <h4 className="font-bold text-sm leading-snug">
-                                    {evento.titulo}
-                                </h4>
+                            <h4 className="font-bold text-sm leading-snug">
+                                {evento.titulo}
+                            </h4>
 
-                                <div className="overflow-hidden bg-zinc-200 aspect-video mb-2 flex items-center justify-center">
-                                    <img
-                                        src={evento.imagenes?.[0] || noticiaDefault}
-                                        className="max-h-40 w-auto object-cover transition-transform duration-500 group-hover:scale-105"
-                                    />
-                                </div>
+                            <div className="overflow-hidden bg-zinc-200 aspect-video mb-2 flex items-center justify-center">
+                                <img
+                                    src={evento.imagenes?.[0] || noticiaDefault}
+                                    className="max-h-40 w-auto object-cover transition-transform duration-500 group-hover:scale-105"
+                                />
+                            </div>
 
 
-                            </Link>
-                        ))}
-                    </div>
-
-                   
-                   
-                    {visibleCount + 3 < eventos.length && (
-                        <button
-                            onClick={handleVerMas}
-                            className="mt-5 text-sm font-bold uppercase text-blue-600"
-                        >
-                            Ver más
-                        </button>
-                    )}
+                        </Link>
+                    ))}
                 </div>
+
+
+
+                {visibleCount + 3 < eventos.length && (
+                    <button
+                        onClick={handleVerMas}
+                        className="mt-5 text-sm font-bold uppercase text-blue-600"
+                    >
+                        Ver más
+                    </button>
+                )}
+            </div>
 
         </main>
     );
