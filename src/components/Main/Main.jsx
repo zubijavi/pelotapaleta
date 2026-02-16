@@ -56,7 +56,7 @@ const Main = () => {
                 <div className="lg:col-span-8 group">
                     {ultimaNoticia ? (
                         <Link to={`/noticia/${ultimaNoticia.id}`}>
-                                <span className="inline-block bg-black text-white text-sm px-2 py-1 uppercase font-black ">
+                                <span className="inline-block bg-black text-white text-[9px] lg:text-sm px-2 py-1 uppercase font-black ">
                                     {formatFecha(ultimaNoticia.fecha)}
                                 </span>
 
