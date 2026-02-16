@@ -8,6 +8,7 @@ import noticiaDefault from "../../assets/logo.png"; // Imagen por defecto si no 
 const Main = () => {
     const [eventos, setEventos] = useState([]);
     const [visibleCount, setVisibleCount] = useState(4);
+    const [mostrarMobile, setMostrarMobile] = useState(false);
 
     // Formatear fecha a DD/MM/YYYY
     const formatFecha = (fechaString) => {
@@ -80,7 +81,7 @@ const Main = () => {
 
                 {/* 📰 DOS SIGUIENTES */}
                 <div className="lg:col-span-4 grid grid-cols-2 lg:grid-cols-1 gap-4 lg:gap-6 place-items-center">
-                {/* <div className="border lg:col-span-4 grid grid-cols-2 lg:grid-cols-1 gap-4 lg:gap-6"> */}
+                    {/* <div className="border lg:col-span-4 grid grid-cols-2 lg:grid-cols-1 gap-4 lg:gap-6"> */}
                     {eventos.slice(1, 3).map(evento => (
                         <Link
                             key={evento.id}
@@ -97,12 +98,12 @@ const Main = () => {
                             </h3>
                             {/* <div className="overflow-hidden bg-zinc-200 dark:bg-zinc-800 aspect-video mb-2"> */}
                             <div className="overflow-hidden bg-zinc-200 aspect-video mb-2 flex items-center justify-center">
-                            
+
                                 <img
                                     src={evento.imagenes?.[0] || noticiaDefault}
                                     className=" object-cover transition-transform duration-500 group-hover:scale-105"
 
-                                    // className=" object-cover transition-transform duration-500 group-hover:scale-105"
+                                // className=" object-cover transition-transform duration-500 group-hover:scale-105"
                                 />
                             </div>
                         </Link>
@@ -112,44 +113,51 @@ const Main = () => {
             </div>
 
             {/* 📰 RESTO DE NOTICIAS */}
-            <div className="mt-10">
-                <h3 className="hidden md:block font-display text-right font-black text-m border-b border-black pb-1 mb-2">
-                {/* <h3 className="font-display text-right font-black text-m border-b border-black pb-1 mb-2 "> */}
-                    
-                </h3>
-                <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
-
-                    {eventos.slice(3, visibleCount + 3).map(evento => (
-                        <Link key={evento.id} to={`/noticia/${evento.id}`} className="group">
-                            <p className="text-xs text-zinc-500 uppercase">
-                                {formatFecha(evento.fecha)}
-                            </p>
-
-                            <h4 className="font-bold text-sm leading-snug">
-                                {evento.titulo}
-                            </h4>
-
-                            <div className="overflow-hidden bg-zinc-200 aspect-video mb-2 flex items-center justify-center">
-                                <img
-                                    src={evento.imagenes?.[0] || noticiaDefault}
-                                    className="max-h-40 w-auto object-cover transition-transform duration-500 group-hover:scale-105"
-                                />
-                            </div>
-
-
-                        </Link>
-                    ))}
-                </div>
-
-                {visibleCount + 3 < eventos.length && (
-                    <button
-                        onClick={handleVerMas}
-                        className="mt-6 text-sm font-bold uppercase text-blue-600"
+                <button
+                    onClick={() => setMostrarMobile(!mostrarMobile)}
+                    className="md:hidden mt-5 mb-5 w-full text-sm font-bold uppercase text-blue-600"
+                >
+                    {mostrarMobile ? "Ocultar noticias" : "Ver más noticias"}
+                </button>
+            <div className="flex items-center justify-center">
+  
+                {/* <div className="hidden md:grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6"> */}
+                    <div
+                        className={`grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 ${mostrarMobile ? "block" : "hidden"} md:grid `}
                     >
-                        Ver más
-                    </button>
-                )}
-            </div>
+                        {eventos.slice(3, visibleCount + 3).map(evento => (
+                            <Link key={evento.id} to={`/noticia/${evento.id}`} className="group">
+                                <p className="text-xs text-zinc-500 uppercase">
+                                    {formatFecha(evento.fecha)}
+                                </p>
+
+                                <h4 className="font-bold text-sm leading-snug">
+                                    {evento.titulo}
+                                </h4>
+
+                                <div className="overflow-hidden bg-zinc-200 aspect-video mb-2 flex items-center justify-center">
+                                    <img
+                                        src={evento.imagenes?.[0] || noticiaDefault}
+                                        className="max-h-40 w-auto object-cover transition-transform duration-500 group-hover:scale-105"
+                                    />
+                                </div>
+
+
+                            </Link>
+                        ))}
+                    </div>
+
+                   
+                   
+                    {visibleCount + 3 < eventos.length && (
+                        <button
+                            onClick={handleVerMas}
+                            className="mt-5 text-sm font-bold uppercase text-blue-600"
+                        >
+                            Ver más
+                        </button>
+                    )}
+                </div>
 
         </main>
     );
