@@ -95,15 +95,47 @@ const NewDetails = () => {
     );
   }
 
+  const shareUrl = window.location.href;
+
+  const shareText = noticia.titulo;
+
+  const compartirWhatsApp = () => {
+    const url = `https://wa.me/?text=${encodeURIComponent(
+      shareText + " " + shareUrl
+    )}`;
+    window.open(url, "_blank");
+  };
+
   return (
     <main className="container mx-auto px-4 lg:px-8 max-w-4xl py-10">
 
+  
 
-      <span className="inline-block bg-black text-white text-[10px] px-2 py-1 uppercase font-black mb-4">
-        {formatFecha(noticia.fecha)}
-      </span>
+      <div className="flex justify-between items-center">
+        <span className="inline-block bg-black text-white text-[12px] px-2 py-1 uppercase font-black ">
+          {formatFecha(noticia.fecha)}
+        </span>
 
-      <h1 className="text-4xl lg:text-5xl font-display font-black leading-tight mb-6 uppercase">
+          <button
+        onClick={compartirWhatsApp}
+        className="flex items-center gap-2 px-2 py-1 lg:px-5 lg:py-2 border-2 border-green-500 text-green-500 rounded-lg font-bold uppercase text-[8px] lg:text-sm hover:bg-green-500 hover:text-white transition-all duration-200 " >
+
+          
+        {/* Ícono WhatsApp */}
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          className="w-3 h-3 lg:w-5 lg:h-5"
+          fill="currentColor"
+        >
+          <path d="M12 2a10 10 0 0 0-8.94 14.47L2 22l5.7-1.5A10 10 0 1 0 12 2Zm0 18a7.94 7.94 0 0 1-4.05-1.1l-.29-.17-3.38.89.9-3.3-.19-.34A8 8 0 1 1 12 20Zm4.38-5.62c-.24-.12-1.4-.69-1.62-.77-.22-.08-.38-.12-.54.12-.16.24-.62.77-.76.93-.14.16-.28.18-.52.06-.24-.12-1.01-.37-1.92-1.17-.71-.63-1.19-1.4-1.33-1.64-.14-.24-.02-.37.1-.49.1-.1.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.2-.48-.4-.42-.54-.43l-.46-.01c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.7 2.6 4.12 3.65.58.25 1.03.4 1.38.51.58.18 1.1.16 1.52.1.46-.07 1.4-.57 1.6-1.12.2-.55.2-1.02.14-1.12-.06-.1-.22-.16-.46-.28Z" />
+        </svg>
+
+        Compartir
+      </button>
+      </div>
+
+      <h1 className="text-xl lg:text-3xl font-display font-black leading-tight mt-6 mb-6 uppercase">
         {noticia.titulo}
       </h1>
 
