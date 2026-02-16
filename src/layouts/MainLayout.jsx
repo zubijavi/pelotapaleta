@@ -8,12 +8,12 @@ const MainLayout = () => {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
 
         {/* CONTENIDO CENTRAL */}
-        <div className="lg:col-span-10">
+        <div className="lg:col-span-12">
           <Outlet />
         </div>
 
         {/* ASIDE FIJO */}
-        <Sponsors />
+        {/* <Sponsors /> */}
 
       </div>
 
