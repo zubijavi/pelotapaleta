@@ -7,9 +7,9 @@ import noticiaDefault from "../../assets/logo.png";
 const NewDetails = () => {
   useEffect(() => {
     window.scrollTo({
-  top: 0,
-  behavior: "smooth",
-});
+      top: 0,
+      behavior: "smooth",
+    });
   }, []);
 
   const { id } = useParams();
@@ -104,12 +104,14 @@ const NewDetails = () => {
 
   const shareUrl = window.location.href;
 
-  const shareText = noticia.titulo;
+  const shareTitle = noticia.titulo;
 
   const compartirWhatsApp = () => {
-    const url = `https://wa.me/?text=${encodeURIComponent(
-      shareText + " " + shareUrl
-    )}`;
+    const mensaje = `
+    *${shareTitle}*
+    ${shareUrl}
+  `.trim();
+    const url = `https://wa.me/?text=${encodeURIComponent(mensaje)}`;
     window.open(url, "_blank");
   };
 
