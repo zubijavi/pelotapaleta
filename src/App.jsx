@@ -11,12 +11,15 @@ import Login from "./components/Login/Login";
 import Admin from "./components/Admin/Admin.jsx";
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
 import "./App.css";
+import Sponsors from "./components/Sponsors/Sponsors.jsx";
+import Tienda from "./components/Tienda/Tienda.jsx";
 
 function App() {
   return (
     <Router>
       <Announcements />
       <Header />
+        {/* <Sponsors /> */}
 
       <Routes>
         <Route element={<MainLayout />}>
@@ -24,6 +27,9 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/noticia/:id" element={<NewDetails />} />
           <Route path="/reglamento" element={<Players />} />
+          <Route path="/tienda" element={<Tienda />} />
+
+
         </Route>
         {/* <Route path="/" element={<Main />} /> */}
         {/* <Route path="/noticia/:id" element={<NewDetails />} /> */}

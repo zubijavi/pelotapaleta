@@ -116,7 +116,7 @@ const NewDetails = () => {
   };
 
   return (
-    <main className="container mx-auto px-4 lg:px-8 max-w-4xl py-10">
+    <main className="container mx-auto px-4 max-w-6xl py-10">
 
 
 

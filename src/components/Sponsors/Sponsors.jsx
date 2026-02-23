@@ -1,4 +1,5 @@
 import React from "react";
+import tuasegurador from "../../assets/tuasegurador.png";
 
 const sponsorsData = [
     {
@@ -14,8 +15,16 @@ const sponsorsData = [
         descripcion:
             "Artículos deportivos para la práctica de la pelota paleta y padel.",
         imagen:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3P7pykSxszcIl4EPnVXHyy6x7oJHY2q0MlA&s",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3P7pykSxszcIl4EPnVXHyy6x7oJHY2q0MlA&s",
         sitio: "https://www.dabberfronton.com.ar/",
+    },
+    { nombre: "TuAsegurador",
+        descripcion:
+            "Pagina de Seguros",
+        imagen:
+           "https://www.tuasegurador.com.ar/assets/logo7-BruWrYrO.png",
+        sitio: "https://www.tuasegurador.com.ar/",
+
     }];
 
 export default function Sponsors() {
@@ -26,31 +35,33 @@ export default function Sponsors() {
             </h1> */}
             {/* <div className="w-24 h-2 bg-black dark:bg-white"></div> */}
 
-            <section 
-            className="lg:col-span-2 top-24 self-start flex flex-row lg:flex-col gap-4"
+            <section
+                className="flex justify-evenly"
             // className="lg:col-span-2 top-24 self-start flex flex-col gap-8"
             >
-            {/* // className="border grid grid-cols-1 md:grid-cols-2 gap-6 mb-16 max-w-4xl mx-auto px-4 justify-items-center"> */}
+                {/* // className="border grid grid-cols-1 md:grid-cols-2 gap-6 mb-16 max-w-4xl mx-auto px-4 justify-items-center"> */}
                 {sponsorsData.map((sponsor, index) => (
                     <div
                         key={index}
-                        className="group pt-4 w-full max-w-sm text-center"
+                        className="group text-center"
                     >
-                        <div className="bg-gray-100 dark:bg-gray-800 aspect-350 flex items-center justify-center p-4 mb-4 overflow-hidden">
-                            <a href={sponsor.sitio}  target="_blank"rel="noopener noreferrer">
+                        <div className="h-20   
+                        flex items-center justify-center">
+                            <a href={sponsor.sitio} target="_blank" rel="noopener noreferrer">
                                 <img
-                                    
+
                                     src={sponsor.imagen}
                                     alt={sponsor.nombre}
-                                    className="w-full h-full object-contain"
+                                    className="w-40 h-40 object-contain"
                                 />
 
-                    </a>
+                            </a>
                         </div>
+               
                     </div >
-            ))
+                ))
                 }
-        </section >
+            </section >
 
         </>
     );
