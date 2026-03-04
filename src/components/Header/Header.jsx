@@ -14,7 +14,33 @@ export default function Header() {
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-zinc-200 dark:border-zinc-800">
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between h-24 lg:h-32">
-
+          {/* Botón Mobile */}
+          <div className="md:hidden">
+            <button
+              onClick={() => setMobileOpen(!mobileOpen)}
+              className="relative w-14 h-14 flex items-center justify-center"
+              aria-label="Abrir menú"
+            >
+              <span
+                className={`
+                  absolute h-0.5 w-6 bg-black dark:bg-white transition-all duration-300
+                  ${mobileOpen ? "rotate-45" : "-translate-y-2"}
+                `}
+              />
+              <span
+                className={`
+                  absolute h-0.5 w-6 bg-black dark:bg-white transition-all duration-300
+                  ${mobileOpen ? "opacity-0" : ""}
+                `}
+              />
+              <span
+                className={`
+                  absolute h-0.5 w-6 bg-black dark:bg-white transition-all duration-300
+                  ${mobileOpen ? "-rotate-45" : "translate-y-2"}
+                `}
+              />
+            </button>
+          </div>
           {/* Logo */}
           <div className="shrink-0">
             <Link to="/">
@@ -58,43 +84,17 @@ export default function Header() {
             </ul>
           </nav>
 
-          {/* Botón Mobile */}
-          <div className="md:hidden">
-            <button
-              onClick={() => setMobileOpen(!mobileOpen)}
-              className="relative w-10 h-10 flex items-center justify-center"
-              aria-label="Abrir menú"
-            >
-              <span
-                className={`
-                  absolute h-0.5 w-6 bg-black dark:bg-white transition-all duration-300
-                  ${mobileOpen ? "rotate-45" : "-translate-y-2"}
-                `}
-              />
-              <span
-                className={`
-                  absolute h-0.5 w-6 bg-black dark:bg-white transition-all duration-300
-                  ${mobileOpen ? "opacity-0" : ""}
-                `}
-              />
-              <span
-                className={`
-                  absolute h-0.5 w-6 bg-black dark:bg-white transition-all duration-300
-                  ${mobileOpen ? "-rotate-45" : "translate-y-2"}
-                `}
-              />
-            </button>
-          </div>
-        {/* Logo Tienda */}
-        <div>
 
-          <Link
-            to="/tienda"
-            onClick={() => setMobileOpen(false)}
-          >
-            <img src={LogoTienda} alt="logo tienda" className="h-24 lg:h30" />
-          </Link>
-        </div>
+          {/* Logo Tienda */}
+          <div>
+
+            <Link
+              to="/tienda"
+              onClick={() => setMobileOpen(false)}
+            >
+              <img src={LogoTienda} alt="logo tienda" className="h-20 lg:h30" />
+            </Link>
+          </div>
         </div>
       </div>
 
