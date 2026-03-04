@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import LogoTienda from "../../assets/logoTienda.jpg";
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -28,7 +29,6 @@ export default function Header() {
             </Link>
           </div>
 
-          {/* Nav Desktop */}
           <nav className="hidden md:flex items-center gap-10">
             <ul className="flex items-center gap-8 font-bold text-sm tracking-widest uppercase">
               <li>
@@ -46,6 +46,15 @@ export default function Header() {
                   Contacto
                 </a>
               </li>
+              {/* <li>
+                <Link
+                  to="/tienda"
+                  onClick={() => setMobileOpen(false)}
+                  className="py-3 hover:opacity-70 transition"
+                >
+                  Tienda
+                </Link>
+              </li> */}
             </ul>
           </nav>
 
@@ -76,8 +85,19 @@ export default function Header() {
               />
             </button>
           </div>
+        {/* Logo Tienda */}
+        <div>
+
+          <Link
+            to="/tienda"
+            onClick={() => setMobileOpen(false)}
+          >
+            <img src={LogoTienda} alt="logo tienda" className="h-24 lg:h30" />
+          </Link>
+        </div>
         </div>
       </div>
+
 
       {/* Menú Mobile Animado */}
       <div
@@ -107,9 +127,18 @@ export default function Header() {
                 Contacto
               </a>
             </li>
+            {/* <li>
+              <Link
+                to="/tienda"
+                onClick={() => setMobileOpen(false)}
+                className="py-3 hover:opacity-70 transition"
+              >
+                Tienda
+              </Link>
+            </li> */}
           </ul>
         </div>
       </div>
-    </header>
+    </header >
   );
 }
