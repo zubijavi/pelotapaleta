@@ -56,10 +56,10 @@ export default function Header() {
           </div>
 
           <nav className="hidden md:flex items-center gap-10">
-            <ul className="flex items-center gap-8 font-bold text-sm tracking-widest uppercase">
+            <ul className="flex items-center gap-8 font-bold text-xs tracking-widest uppercase">
               <li>
                 <Link to="#" className="hover:opacity-70 transition">
-                  Calendario
+                  Calendario 2026
                 </Link>
               </li>
               <li>
@@ -92,7 +92,7 @@ export default function Header() {
               to="/tienda"
               onClick={() => setMobileOpen(false)}
             >
-              <img src={LogoTienda} alt="logo tienda" className="h-20 lg:h-32" />
+              <img src={LogoTienda} alt="logo tienda" className="h-20 lg:h-26" />
             </Link>
           </div>
         </div>

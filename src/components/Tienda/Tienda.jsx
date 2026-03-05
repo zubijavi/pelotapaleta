@@ -172,7 +172,7 @@ const Tienda = () => {
     return (
         <main className="w-full px-4 ">
             <div className="mb-18 flex justify-center items-center">
-                <h1 className="text-4xl">TIENDA</h1>
+                <h1 className="text-4xl">La Tienda del Pelotari</h1>
                 {/* <img
                     src={logoTienda}
                     alt="Logo tienda"
