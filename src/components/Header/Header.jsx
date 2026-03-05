@@ -45,10 +45,10 @@ export default function Header() {
           <div className="shrink-0">
             <Link to="/">
               <button onClick={scrollToTop} className="cursor-pointer">
-                <h1 className="text-left text-xl lg:text-3xl font-black">
+                <h1 className="text-xl lg:text-3xl font-black">
                   PELOTA PALETA
                 </h1>
-                <h5 className="text-left text-sm lg:text-lg font-semibold">
+                <h5 className="text-center lg:text-left text-sm lg:text-lg font-semibold">
                   Rosario
                 </h5>
               </button>
@@ -92,7 +92,7 @@ export default function Header() {
               to="/tienda"
               onClick={() => setMobileOpen(false)}
             >
-              <img src={LogoTienda} alt="logo tienda" className="h-20 lg:h30" />
+              <img src={LogoTienda} alt="logo tienda" className="h-20 lg:h-32" />
             </Link>
           </div>
         </div>
@@ -108,6 +108,15 @@ export default function Header() {
       >
         <div className="border-t border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900">
           <ul className="flex flex-col p-4 font-bold text-lg tracking-widest uppercase">
+                 <li>
+              <Link
+                to="/"
+                onClick={() => setMobileOpen(false)}
+                className="py-3 hover:opacity-70 transition"
+              >
+                Calendario 2026
+              </Link>
+            </li>
             <li>
               <Link
                 to="/reglamento"
