@@ -149,6 +149,7 @@ const Main = () => {
 
 
 
+            </div>
                 {visibleCount + 3 < eventos.length && (
                     <button
                         onClick={handleVerMas}
@@ -157,7 +158,6 @@ const Main = () => {
                         Ver más
                     </button>
                 )}
-            </div>
 
         </main>
     );
