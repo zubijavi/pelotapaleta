@@ -41,7 +41,7 @@ export default function Footer() {
 
       <div className="container mx-auto px-4 max-w-4xl pt-6">
 
-        <div className="mb-10 text-center uppercase text-3xl flex justify-center gap-10">
+        <div className="mb-10 text-center text-gray-100 uppercase text-3xl flex justify-center gap-10">
           <h2>Contacto</h2>
 
           <a
