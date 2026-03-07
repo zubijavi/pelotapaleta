@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import LogoTienda from "../../assets/logoTienda.jpg";
+import pelotari from "../../assets/pelotari.png";
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -11,8 +12,8 @@ export default function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-zinc-200 dark:border-zinc-800">
-      <div className="container mx-auto px-4 lg:px-8">
+    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-zinc-200">
+      <div className="container mx-auto px-4 lg:px-2">
         <div className="flex items-center justify-between h-24 lg:h-32">
           {/* Botón Mobile */}
           <div className="md:hidden">
@@ -44,13 +45,16 @@ export default function Header() {
           {/* Logo */}
           <div className="shrink-0">
             <Link to="/">
-              <button onClick={scrollToTop} className="cursor-pointer">
-                <h1 className="text-xl lg:text-3xl font-black">
-                  PELOTA PALETA
-                </h1>
-                <h5 className="text-center lg:text-left text-sm lg:text-lg font-semibold">
-                  Rosario
-                </h5>
+              <button onClick={scrollToTop} className="cursor-pointer flex gap-1 lg:gap-4 items-center">
+                <img src={pelotari} className="h-20 lg:h-30" alt="" />
+                <div >
+                  <h1 className="text-m lg:text-l font-black">
+                    PELOTA PALETA
+                  </h1>
+                  <h5 className="text-center text-sm lg:text-m font-semibold">
+                    Rosario
+                  </h5>
+                </div>
               </button>
             </Link>
           </div>
@@ -58,12 +62,12 @@ export default function Header() {
           <nav className="hidden md:flex items-center gap-10">
             <ul className="flex items-center gap-8 font-bold text-xs tracking-widest uppercase">
               <li>
-                <Link to="#" className="hover:opacity-70 transition">
+                <Link to="#" onClick={scrollToTop} className="hover:opacity-70 transition">
                   Calendario 2026
                 </Link>
               </li>
               <li>
-                <Link to="/reglamento" className="hover:opacity-70 transition">
+                <Link to="/reglamento" onClick={scrollToTop} className="hover:opacity-70 transition">
                   Reglamento
                 </Link>
               </li>
@@ -108,10 +112,13 @@ export default function Header() {
       >
         <div className="border-t border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900">
           <ul className="flex flex-col p-4 font-bold text-lg tracking-widest uppercase">
-                 <li>
+            <li>
               <Link
                 to="/"
-                onClick={() => setMobileOpen(false)}
+                onClick={() => {
+                  setMobileOpen(false);
+                  scrollToTop();
+                }}
                 className="py-3 hover:opacity-70 transition"
               >
                 Calendario 2026
@@ -120,7 +127,10 @@ export default function Header() {
             <li>
               <Link
                 to="/reglamento"
-                onClick={() => setMobileOpen(false)}
+                onClick={() => {
+                  setMobileOpen(false);
+                  scrollToTop();
+                }}
                 className="py-3 hover:opacity-70 transition"
               >
                 Reglamento
@@ -130,7 +140,10 @@ export default function Header() {
             <li>
               <a
                 href="#footer"
-                onClick={() => setMobileOpen(false)}
+                onClick={() => {
+                  setMobileOpen(false);
+                  scrollToTop();
+                }}
                 className="py-3 hover:opacity-70 transition"
               >
                 Contacto

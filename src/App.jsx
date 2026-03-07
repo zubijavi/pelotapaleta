@@ -17,7 +17,7 @@ import Tienda from "./components/Tienda/Tienda.jsx";
 function App() {
   return (
     <Router>
-      <Announcements />
+      {/* <Announcements /> */}
       <Header />
         {/* <Sponsors /> */}
 
