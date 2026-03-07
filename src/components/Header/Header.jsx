@@ -45,13 +45,13 @@ export default function Header() {
           {/* Logo */}
           <div className="shrink-0">
             <Link to="/">
-              <button onClick={scrollToTop} className="cursor-pointer flex gap-1 lg:gap-4 items-center">
-                <img src={pelotari} className="h-20 lg:h-30" alt="" />
+              <button onClick={scrollToTop} className="cursor-pointer flex gap-2 lg:gap-4 items-center">
+                <img src={pelotari} className="h-10 lg:h-30" alt="" />
                 <div >
-                  <h1 className="text-m lg:text-l font-black">
+                  <h1 className="text-xs lg:text-l font-black">
                     PELOTA PALETA
                   </h1>
-                  <h5 className="text-center text-sm lg:text-m font-semibold">
+                  <h5 className="text-center text-xs lg:text-m font-semibold">
                     Rosario
                   </h5>
                 </div>
@@ -94,7 +94,9 @@ export default function Header() {
 
             <Link
               to="/tienda"
-              onClick={() => setMobileOpen(false)}
+              onClick={() => {setMobileOpen(false);
+                scrollToTop();
+              }}
             >
               <img src={LogoTienda} alt="logo tienda" className="h-20 lg:h-26" />
             </Link>
