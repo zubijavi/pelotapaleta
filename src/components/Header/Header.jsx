@@ -74,7 +74,7 @@ export default function Header() {
 
               <li className="relative group">
                 <button
-                  className="hover:opacity-70 uppercase cursor-pointer transition flex items-center justify-between w-full"
+                  className="hover:opacity-70 uppercase cursor-pointer transition flex items-center justify-between"
                 >
                   Tiendas
                 </button>
@@ -82,7 +82,7 @@ export default function Header() {
                 <ul
                   className="
                   pl-4 flex flex-col text-base normal-case
-                  md:absolute md:left-0 md:top-8 md:w-48
+                  md:absolute md:left-0 md:top-4 md:w-48
                   md:bg-white md:border md:border-zinc-200 md:shadow-lg md:rounded-md md:py-2
                   md:opacity-0 md:invisible
                   md:group-hover:opacity-100 md:group-hover:visible
