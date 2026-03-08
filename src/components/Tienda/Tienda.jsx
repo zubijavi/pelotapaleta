@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { db } from "../../firebase";
 import { collection, getDocs } from "firebase/firestore";
 import productoDefault from "../../assets/logo.png";
-// import logoTienda from "../../assets/logoTienda.jpg";
+import logoTienda from "../../assets/logoTienda.jpg";
 
 const productosMock = [
   // =========================
@@ -171,13 +171,13 @@ const Tienda = () => {
 
     return (
         <main className="w-full px-4 ">
-            <div className="mb-18 flex justify-center items-center">
-                <h1 className="text-4xl">La Tienda del Pelotari</h1>
-                {/* <img
+            <div className="flex justify-around items-center">
+                <h1 className="text-l lg:text-4xl uppercase">La Tienda del Pelotari</h1>
+                <img
                     src={logoTienda}
                     alt="Logo tienda"
-                    className="h-48 lg:h-36 w-auto object-contain"
-                /> */}
+                    className="h-20 lg:h-36 w-auto object-contain"
+                />
             </div>
 
             {productos.length === 0 ? (

@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import LogoTienda from "../../assets/logoTienda.jpg";
+// import LogoTienda from "../../assets/logoTienda.jpg";
 import pelotari from "../../assets/pelotari.png";
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [submenuOpen, setSubmenuOpen] = useState(false);
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -15,6 +16,25 @@ export default function Header() {
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-zinc-200">
       <div className="container mx-auto px-4 lg:px-2">
         <div className="flex items-center justify-between h-24 lg:h-32">
+
+          {/* Logo */}
+          <div className="shrink-0">
+            <Link to="/">
+              <button onClick={scrollToTop} className="cursor-pointer flex gap-2 lg:gap-4 items-center">
+                <img src={pelotari} className="h-10 lg:h-30" alt="" />
+                <div >
+                  <h1 className="text-xs lg:text-l font-black">
+                    PELOTA PALETA
+                  </h1>
+                  <h5 className="text-center text-xs lg:text-m font-semibold">
+                    Rosario
+                  </h5>
+                </div>
+              </button>
+            </Link>
+          </div>
+
+
           {/* Botón Mobile */}
           <div className="md:hidden">
             <button
@@ -42,23 +62,8 @@ export default function Header() {
               />
             </button>
           </div>
-          {/* Logo */}
-          <div className="shrink-0">
-            <Link to="/">
-              <button onClick={scrollToTop} className="cursor-pointer flex gap-2 lg:gap-4 items-center">
-                <img src={pelotari} className="h-10 lg:h-30" alt="" />
-                <div >
-                  <h1 className="text-xs lg:text-l font-black">
-                    PELOTA PALETA
-                  </h1>
-                  <h5 className="text-center text-xs lg:text-m font-semibold">
-                    Rosario
-                  </h5>
-                </div>
-              </button>
-            </Link>
-          </div>
 
+          {/* Menú Desktop */}
           <nav className="hidden md:flex items-center gap-10">
             <ul className="flex items-center gap-8 font-bold text-xs tracking-widest uppercase">
               <li>
@@ -66,32 +71,72 @@ export default function Header() {
                   Calendario 2026
                 </Link>
               </li>
+
+              <li className="relative group">
+                <button
+                  className="hover:opacity-70 uppercase cursor-pointer transition flex items-center justify-between w-full"
+                >
+                  Tiendas
+                </button>
+
+                <ul
+                  className="
+                  pl-4 flex flex-col text-base normal-case
+                  md:absolute md:left-0 md:top-8 md:w-48
+                  md:bg-white md:border md:border-zinc-200 md:shadow-lg md:rounded-md md:py-2
+                  md:opacity-0 md:invisible
+                  md:group-hover:opacity-100 md:group-hover:visible
+                  md:transition
+                  
+                "
+                >
+                  <li className="py-2">
+
+                    <Link
+                      to="/tienda"
+                      onClick={() => {
+                        setMobileOpen(false);
+                        scrollToTop();
+                      }}
+                      className="hover:opacity-70 transition"
+                    >
+                      Tienda del Pelotari
+                    </Link>
+                  </li>
+
+                  {/* <li className="py-2">
+                    <Link
+                      to="/tienda"
+                      onClick={() => {
+                        setMobileOpen(false);
+                        scrollToTop();
+                      }}
+                      className="hover:opacity-70 transition"
+                    >
+                      Dabber Diamante
+                    </Link>
+                  </li> */}
+                </ul>
+              </li>
+
               <li>
                 <Link to="/reglamento" onClick={scrollToTop} className="hover:opacity-70 transition">
                   Reglamento
                 </Link>
               </li>
+
               <li>
                 <a href="#footer" className="hover:opacity-70 transition">
                   Contacto
                 </a>
               </li>
-              {/* <li>
-                <Link
-                  to="/tienda"
-                  onClick={() => setMobileOpen(false)}
-                  className="py-3 hover:opacity-70 transition"
-                >
-                  Tienda
-                </Link>
-              </li> */}
             </ul>
           </nav>
 
 
           {/* Logo Tienda */}
-          <div>
-
+          {/* <div> */}
+          {/* 
             <Link
               to="/tienda"
               onClick={() => {setMobileOpen(false);
@@ -99,8 +144,9 @@ export default function Header() {
               }}
             >
               <img src={LogoTienda} alt="logo tienda" className="h-20 lg:h-26" />
-            </Link>
-          </div>
+            </Link> */}
+
+          {/* </div> */}
         </div>
       </div>
 
@@ -140,6 +186,45 @@ export default function Header() {
             </li>
 
             <li>
+              <button
+                onClick={() => setSubmenuOpen(!submenuOpen)}
+                className="hover:opacity-70 uppercase cursor-pointer transition flex items-center justify-between w-full"
+              >
+                Tiendas
+              </button>
+
+              {submenuOpen && (
+                <ul className="pl-4 flex flex-col text-base normal-case ">
+                  <li className="py-2">
+
+                    <Link
+                      to="/tienda"
+                      onClick={() => {
+                        setMobileOpen(false);
+                        scrollToTop();
+                      }}
+                      className="hover:opacity-70 transition"
+                    >
+                      - Tienda del Pelotari
+                    </Link>
+                  </li>
+                  {/* <li className="py-2">
+                    <Link
+                      to="/tienda"
+                      onClick={() => {
+                        setMobileOpen(false);
+                        scrollToTop();
+                      }}
+                      className="hover:opacity-70 transition"
+                    >
+                      - Dabber Diamante
+                    </Link>
+                  </li> */}
+                </ul>
+              )}
+            </li>
+
+            <li>
               <a
                 href="#footer"
                 onClick={() => {
@@ -151,15 +236,8 @@ export default function Header() {
                 Contacto
               </a>
             </li>
-            {/* <li>
-              <Link
-                to="/tienda"
-                onClick={() => setMobileOpen(false)}
-                className="py-3 hover:opacity-70 transition"
-              >
-                Tienda
-              </Link>
-            </li> */}
+
+
           </ul>
         </div>
       </div>
