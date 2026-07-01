@@ -3,9 +3,9 @@ import Sponsors from "../components/Sponsors/Sponsors";
 
 const MainLayout = () => {
   return (
-    <main className="container mx-auto px-4 lg:px-8 py-12">
+    <main className="container mx-auto p-2 ">
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-12">
 
         {/* CONTENIDO CENTRAL */}
         <div className="lg:col-span-12">

@@ -1,27 +1,16 @@
-import { Link } from "react-router-dom"
 import { useRef, useState } from "react"
 import emailjs from "@emailjs/browser"
 
 export default function Footer() {
-
-  const telefono = "5493413354935"
-  const mensajeWhatsapp = "Hola! Quiero hacer una consulta desde la web."
-
   const form = useRef()
   const [enviando, setEnviando] = useState(false)
 
   const enviarEmail = (e) => {
     e.preventDefault()
-
     setEnviando(true)
 
     emailjs
-      .sendForm(
-        "service_krcvf27",
-        "template_dsjtoku",
-        form.current,
-        "8Gr7R_EpXExmBvjCo"
-      )
+      .sendForm("service_krcvf27", "template_dsjtoku", form.current, "8Gr7R_EpXExmBvjCo")
       .then(
         () => {
           alert("Mensaje enviado correctamente")
@@ -37,40 +26,26 @@ export default function Footer() {
   }
 
   return (
-    <footer id="footer" className="bg-black text-white py-10 lg:pt-6 pb-6">
-
-      <div className="container mx-auto px-4 max-w-4xl pt-6">
-
-        <div className="mb-10 text-center text-gray-100 uppercase text-3xl flex justify-center gap-10">
-          <h2>Contacto</h2>
-
-          <a
-            href={`https://wa.me/${telefono}?text=${encodeURIComponent(mensajeWhatsapp)}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-white hover:text-green-400 transition"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              width="40"
-              height="40"
-              fill="currentColor"
-            >
-              <path d="M12 2a10 10 0 0 0-8.7 14.9L2 22l5.3-1.4A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3.1.8.8-3-.2-.3A8 8 0 1 1 12 20zm4.3-5.5c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.6.1s-.6.8-.7.9c-.1.1-.3.2-.5.1s-1-.4-1.9-1.2c-.7-.6-1.2-1.4-1.3-1.6-.1-.2 0-.3.1-.4.1-.1.2-.3.3-.4.1-.1.1-.3.2-.4.1-.1 0-.3 0-.4 0-.1-.5-1.2-.7-1.7-.2-.4-.4-.4-.5-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 1.9s.8 2.1.9 2.3c.1.1 1.6 2.5 3.9 3.4.5.2 1 .4 1.3.5.6.2 1.1.1 1.5.1.5-.1 1.4-.6 1.6-1.1.2-.5.2-1 .1-1.1-.1-.1-.3-.2-.5-.3z"/>
-            </svg>
-          </a>
-        </div>
+    <footer id="footer" className="bg-zinc-900 text-zinc-200 py-12 px-6">
+      <div className="container mx-auto max-w-3xl flex flex-col items-center text-center gap-8">
+        
+        {/* Título */}
+        <h2 className="text-2xl font-bold border-b border-green-500 pb-2">
+          Contacto
+        </h2>
 
         {/* FORMULARIO */}
-        <form ref={form} onSubmit={enviarEmail} className="space-y-4 mb-12">
-
+        <form
+          ref={form}
+          onSubmit={enviarEmail}
+          className="w-full max-w-md space-y-4 bg-zinc-800 p-6 rounded-lg shadow-lg"
+        >
           <input
             type="text"
             name="name"
             placeholder="Nombre"
             required
-            className="w-full bg-zinc-900 border border-zinc-700 px-4 py-3 text-sm"
+            className="w-full bg-zinc-700 border border-zinc-600 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
           />
 
           <input
@@ -78,7 +53,7 @@ export default function Footer() {
             name="user_contact"
             placeholder="Email o Teléfono"
             required
-            className="w-full bg-zinc-900 border border-zinc-700 px-4 py-3 text-sm"
+            className="w-full bg-zinc-700 border border-zinc-600 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
           />
 
           <textarea
@@ -86,26 +61,23 @@ export default function Footer() {
             placeholder="Mensaje"
             rows="4"
             required
-            className="w-full bg-zinc-900 border border-zinc-700 px-4 py-3 text-sm"
+            className="w-full bg-zinc-700 border border-zinc-600 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
           ></textarea>
 
           <button
             type="submit"
             disabled={enviando}
-            className="cursor-pointer w-full bg-gray-200 text-black py-3 uppercase text-xs font-bold tracking-widest hover:bg-gray-300 transition"
+            className="cursor-pointer w-full bg-green-600 hover:bg-green-700 text-white py-3 rounded-md uppercase text-xs font-bold tracking-widest transition"
           >
             {enviando ? "Enviando..." : "Enviar"}
           </button>
-
         </form>
-
       </div>
 
       {/* COPYRIGHT */}
-      <div className="border-t border-zinc-800 mt-8 pt-6 text-center text-xs text-zinc-400">
-        © {new Date().getFullYear()} Rosario Pelota Paleta.
+      <div className="border-t border-zinc-700 mt-12 pt-6 text-center text-xs text-zinc-400">
+        © {new Date().getFullYear()} Rosario Pelota Paleta. Todos los derechos reservados.
       </div>
-
     </footer>
   )
 }

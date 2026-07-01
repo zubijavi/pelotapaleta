@@ -67,11 +67,12 @@ export default function Header() {
           <nav className="hidden md:flex items-center gap-10">
             <ul className="flex items-center gap-8 font-bold text-xs tracking-widest uppercase">
               <li>
-                <Link to="#" onClick={scrollToTop} className="hover:opacity-70 transition">
-                  Calendario 2026
+                <Link to="/noticias" onClick={scrollToTop} className="hover:opacity-70 transition">
+                  Noticias
                 </Link>
               </li>
-
+              
+{/* 
               <li className="relative group">
                 <button
                   className="hover:opacity-70 uppercase cursor-pointer transition flex items-center justify-between"
@@ -104,7 +105,7 @@ export default function Header() {
                     </Link>
                   </li>
 
-                  {/* <li className="py-2">
+                  <li className="py-2">
                     <Link
                       to="/tienda"
                       onClick={() => {
@@ -115,15 +116,15 @@ export default function Header() {
                     >
                       Dabber Diamante
                     </Link>
-                  </li> */}
+                  </li>
                 </ul>
-              </li>
-
+              </li> */}
+{/* 
               <li>
                 <Link to="/reglamento" onClick={scrollToTop} className="hover:opacity-70 transition">
                   Reglamento
                 </Link>
-              </li>
+              </li> */}
 
               <li>
                 <a href="#footer" className="hover:opacity-70 transition">

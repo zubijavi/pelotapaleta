@@ -13,21 +13,27 @@ import ProtectedRoute from "./components/ProtectedRoute.jsx";
 import "./App.css";
 import Sponsors from "./components/Sponsors/Sponsors.jsx";
 import Tienda from "./components/Tienda/Tienda.jsx";
+import Calendario from "./components/Calendario/Calendario.jsx";
 
 function App() {
   return (
     <Router>
       {/* <Announcements /> */}
       <Header />
-        {/* <Sponsors /> */}
-
+      {/* <Sponsors /> */}
+      {/* <Calendario /> */}
       <Routes>
         <Route element={<MainLayout />}>
 
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Calendario />} />
+          <Route path="/noticias" element={<Home />} />
+
           <Route path="/noticia/:id" element={<NewDetails />} />
           <Route path="/reglamento" element={<Players />} />
           <Route path="/tienda" element={<Tienda />} />
+          {/* <Route path="/calendario" element={<Calendario />} /> */}
+
+
 
 
         </Route>
