@@ -3,7 +3,7 @@ import Sponsors from "../components/Sponsors/Sponsors";
 
 const MainLayout = () => {
   return (
-    <main className="container mx-auto p-2 ">
+    <main className="">
 
       <div className="grid grid-cols-1 lg:grid-cols-12">
 

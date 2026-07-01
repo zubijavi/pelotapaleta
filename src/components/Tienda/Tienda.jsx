@@ -170,15 +170,7 @@ const Tienda = () => {
     };
 
     return (
-        <main className="w-full px-4 ">
-            <div className="flex justify-around items-center">
-                <h1 className="text-l lg:text-4xl uppercase">La Tienda del Pelotari</h1>
-                <img
-                    src={logoTienda}
-                    alt="Logo tienda"
-                    className="h-20 lg:h-36 w-auto object-contain"
-                />
-            </div>
+        <main className="w-full p-4 bg-zinc-200">
 
             {productos.length === 0 ? (
                 <p className="text-center text-zinc-500">
@@ -186,38 +178,40 @@ const Tienda = () => {
                 </p>
             ) : (
                 <>
-                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-6">
-                        {productos.slice(0, visibleCount).map((producto) => (
-                            <div
-                                key={producto.id}
-                                className="group border rounded-xl overflow-hidden hover:shadow-lg transition"
-                            >
-                                <div className="aspect-square bg-zinc-100 flex items-center justify-center overflow-hidden">
-                                    <img
-                                        src={producto.imagenes?.[0] || productoDefault}
-                                        alt={producto.nombre}
-                                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                                    />
-                                </div>
+                
+                    <div className="flex flex-wrap justify-center items-center gap-4 lg:gap-6">
+  {productos.slice(0, visibleCount).map((producto) => (
+    <div
+      key={producto.id}
+      className="w-40 md:w-48 lg:w-52 group border rounded-lg overflow-hidden bg-white shadow-sm hover:shadow-md transition-transform duration-300 hover:-translate-y-1"
+    >
+      {/* Imagen */}
+      <div className="aspect-square bg-zinc-100 flex items-center justify-center overflow-hidden">
+        <img
+          src={producto.imagenes?.[0] || productoDefault}
+          alt={producto.nombre}
+          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+        />
+      </div>
 
-                                <div className="p-3">
-                                    <h3 className="font-bold text-sm lg:text-base leading-snug">
-                                        {producto.nombre}
-                                    </h3>
+      {/* Info */}
+      <div className="p-3 flex flex-col gap-1 text-center">
+        <h3 className="font-semibold text-sm lg:text-base text-zinc-800 truncate">
+          {producto.nombre}
+        </h3>
+        <p className="text-sm text-green-700 font-bold">
+          ${producto.precio.toLocaleString("es-AR")}
+        </p>
+        {producto.categoria && (
+          <p className="text-xs text-zinc-500 uppercase tracking-wide">
+            {producto.categoria}
+          </p>
+        )}
+      </div>
+    </div>
+  ))}
+</div>
 
-                                    <p className="text-sm text-zinc-600 font-semibold">
-                                        ${producto.precio}
-                                    </p>
-
-                                    {/* {producto.categoria && (
-                                        <p className="text-xs text-zinc-400 uppercase">
-                                            {producto.categoria}
-                                        </p>
-                                    )} */}
-                                </div>
-                            </div>
-                        ))}
-                    </div>
 
                     {visibleCount < productos.length && (
                         <div className="flex justify-center mt-6">

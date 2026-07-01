@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-// import LogoTienda from "../../assets/logoTienda.jpg";
+import LogoTienda from "../../assets/logoTienda.jpg";
 import pelotari from "../../assets/pelotari.png";
 
 export default function Header() {
@@ -127,8 +127,8 @@ export default function Header() {
               </li> */}
 
               <li>
-                <a href="#footer" className="hover:opacity-70 transition">
-                  Contacto
+                <a href="/tienda" className="hover:opacity-70 transition">
+                  Tienda
                 </a>
               </li>
             </ul>
@@ -159,9 +159,9 @@ export default function Header() {
           ${mobileOpen ? "max-h-60 opacity-100" : "max-h-0 opacity-0"}
         `}
       >
-        <div className="border-t border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900">
-          <ul className="flex flex-col p-4 font-bold text-lg tracking-widest uppercase">
-            <li>
+        <div className="border-t  border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900">
+          <ul className="flex justify-around items-center ">
+            {/* <li>
               <Link
                 to="/"
                 onClick={() => {
@@ -172,21 +172,21 @@ export default function Header() {
               >
                 Calendario 2026
               </Link>
-            </li>
+            </li> */}
             <li>
               <Link
-                to="/reglamento"
+                to="/Noticias"
                 onClick={() => {
                   setMobileOpen(false);
                   scrollToTop();
                 }}
-                className="py-3 hover:opacity-70 transition"
+                className="text-4xl hover:opacity-70 transition"
               >
-                Reglamento
+                Noticias
               </Link>
             </li>
 
-            <li>
+            {/* <li>
               <button
                 onClick={() => setSubmenuOpen(!submenuOpen)}
                 className="hover:opacity-70 uppercase cursor-pointer transition flex items-center justify-between w-full"
@@ -209,7 +209,7 @@ export default function Header() {
                       - Tienda del Pelotari
                     </Link>
                   </li>
-                  {/* <li className="py-2">
+                  <li className="py-2">
                     <Link
                       to="/tienda"
                       onClick={() => {
@@ -220,21 +220,22 @@ export default function Header() {
                     >
                       - Dabber Diamante
                     </Link>
-                  </li> */}
+                  </li>
                 </ul>
               )}
-            </li>
+            </li> */}
 
             <li>
               <a
-                href="#footer"
+                href="/tienda"
                 onClick={() => {
                   setMobileOpen(false);
                   scrollToTop();
                 }}
                 className="py-3 hover:opacity-70 transition"
               >
-                Contacto
+                <img src={LogoTienda} alt="logo tienda" className="h-20 lg:h-26" />
+                
               </a>
             </li>
 
