@@ -26,53 +26,8 @@ export default function Footer() {
   }
 
   return (
-    <footer id="footer" className="bg-zinc-900 text-zinc-200 py-12 px-6">
-      <div className="container mx-auto max-w-3xl flex flex-col items-center text-center gap-8">
-        
-        {/* Título */}
-        <h2 className="text-2xl font-bold border-b border-green-500 pb-2">
-          Contacto
-        </h2>
+    <footer id="footer" className="bg-zinc-900 text-zinc-200 py-6 px-24">
 
-        {/* FORMULARIO */}
-        <form
-          ref={form}
-          onSubmit={enviarEmail}
-          className="w-full max-w-md space-y-4 bg-zinc-800 p-6 rounded-lg shadow-lg"
-        >
-          <input
-            type="text"
-            name="name"
-            placeholder="Nombre"
-            required
-            className="w-full bg-zinc-700 border border-zinc-600 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
-          />
-
-          <input
-            type="text"
-            name="user_contact"
-            placeholder="Email o Teléfono"
-            required
-            className="w-full bg-zinc-700 border border-zinc-600 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
-          />
-
-          <textarea
-            name="message"
-            placeholder="Mensaje"
-            rows="4"
-            required
-            className="w-full bg-zinc-700 border border-zinc-600 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
-          ></textarea>
-
-          <button
-            type="submit"
-            disabled={enviando}
-            className="cursor-pointer w-full bg-green-600 hover:bg-green-700 text-white py-3 rounded-md uppercase text-xs font-bold tracking-widest transition"
-          >
-            {enviando ? "Enviando..." : "Enviar"}
-          </button>
-        </form>
-      </div>
 
       {/* COPYRIGHT */}
       <div className="border-t border-zinc-700 mt-12 pt-6 text-center text-xs text-zinc-400">
