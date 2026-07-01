@@ -48,7 +48,7 @@ const Main = () => {
         setVisibleCount(prev => prev + 2);
     };
     return (
-        <main className="w-full px-4 lg:px-8">
+        <main className="w-full px-4 lg:p-8">
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
 

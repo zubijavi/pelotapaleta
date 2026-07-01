@@ -15,18 +15,22 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-zinc-200">
       <div className="container mx-auto px-4 lg:px-2">
-        <div className="flex items-center justify-between h-24 lg:h-32">
+        <div className="flex items-center justify-between h-18">
+          <Link to="/">
+            <button onClick={scrollToTop} className="cursor-pointer flex gap-2 lg:gap-4 items-center">
 
+              <img src={pelotari} className="h-10 lg:h-15" alt="" />
+            </button>
+          </Link>
           {/* Logo */}
           <div className="shrink-0">
             <Link to="/">
               <button onClick={scrollToTop} className="cursor-pointer flex gap-2 lg:gap-4 items-center">
-                <img src={pelotari} className="h-10 lg:h-30" alt="" />
                 <div >
-                  <h1 className="text-xs lg:text-l font-black">
+                  <h1 className="text-xs lg:text-xl font-black">
                     PELOTA PALETA
                   </h1>
-                  <h5 className="text-center text-xs lg:text-m font-semibold">
+                  <h5 className="text-center text-xs lg:text-l font-semibold">
                     Rosario
                   </h5>
                 </div>
@@ -71,8 +75,8 @@ export default function Header() {
                   Noticias
                 </Link>
               </li>
-              
-{/* 
+
+              {/* 
               <li className="relative group">
                 <button
                   className="hover:opacity-70 uppercase cursor-pointer transition flex items-center justify-between"
@@ -119,7 +123,7 @@ export default function Header() {
                   </li>
                 </ul>
               </li> */}
-{/* 
+              {/* 
               <li>
                 <Link to="/reglamento" onClick={scrollToTop} className="hover:opacity-70 transition">
                   Reglamento
@@ -235,7 +239,7 @@ export default function Header() {
                 className="py-3 hover:opacity-70 transition"
               >
                 <img src={LogoTienda} alt="logo tienda" className="h-20 lg:h-26" />
-                
+
               </a>
             </li>
 
