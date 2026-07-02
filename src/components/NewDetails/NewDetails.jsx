@@ -147,36 +147,102 @@ const NewDetails = () => {
       <h1 className="text-xl lg:text-3xl font-display font-black leading-tight mt-6 mb-6 uppercase">
         {noticia.titulo}
       </h1>
+      <div>
 
+        {/* <h1 className="text-xl lg:text-3xl font-display font-black leading-tight mb-6 uppercase">
+      {noticia.titulo}
+    </h1> */}
+
+        <div className="max-w-none">
+          {noticia.descripcion
+            ?.split("\n")
+            .filter((p) => p.trim() !== "")
+            .map((parrafo, i) => (
+              <p
+                key={i}
+                className="text-zinc-600 text-lg leading-relaxed mb-4"
+              >
+                {parrafo}
+              </p>
+            ))}
+        </div>
+
+      </div>
       {/* Imagen principal */}
-      <div className="mb-8 bg-zinc-200 dark:bg-zinc-800 aspect-video overflow-hidden">
-        <img
-          src={noticia.imagenes?.[0] || noticiaDefault}
-          alt={noticia.titulo}
-          onClick={() => abrirModal(0)}
-          className="w-full h-full object-contain cursor-pointer"
-        />
+      <div className="grid lg:grid-cols-2 gap-10 items-start">
+
+        {/* Izquierda */}
+        {/* ✅ PLANILLA GOOGLE */}
+        {noticia.planilla && (
+          <div className="mt-12">
+            <h3 className="text-center text-xl font-semibold ">
+              Inscriptos, zonas y resultados
+            </h3>
+
+            <div className="flex justify-center">
+              <div className="w-full max-w-4xl overflow-hidden border shadow-sm rounded-lg">
+                <iframe
+                  src={`${noticia.planilla}?t=${Date.now()}`}
+                  className="w-full h-60 bg-white"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+
+            <a
+              href={noticia.planilla}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block text-center mt-3 text-sm text-blue-600 font-semibold"
+            >
+              Abrir planilla en nueva pestaña
+            </a>
+          </div>
+        )}
+
+        {/* Derecha */}
+
+
+        {/* Imagen principal */}
+        {/* <div className="bg-zinc-200 aspect-video overflow-hidden rounded-lg">
+      <img
+        src={noticia.imagenes?.[0] || noticiaDefault}
+        alt={noticia.titulo}
+        onClick={() => abrirModal(0)}
+        className="w-full h-full object-contain cursor-pointer"
+      />
+    </div> */}
+
+        {/* Miniaturas */}
+        {noticia.imagenes?.length > 0 && (
+          <>
+          <div>
+            <h3 className="text-center text-xl font-semibold mb-3">
+              Galería de Imágenes
+            </h3>
+
+            <div className="grid grid-cols-3 gap-3">
+              {noticia.imagenes.map((img, index) => (
+                <img
+                  key={index}
+                  src={img}
+                  alt={`${noticia.titulo} ${index + 1}`}
+                  onClick={() => abrirModal(index)}
+                  className="w-50 rounded-lg cursor-pointer hover:opacity-80 transition"
+                />
+              ))}
+            </div>
+            </div>
+          </>
+        )}
+
       </div>
 
-      {/* Descripción */}
-      <div className="max-w-none">
-        {noticia.descripcion
-          ?.split("\n")
-          .filter((p) => p.trim() !== "")
-          .map((parrafo, i) => (
-            <p
-              key={i}
-              className="text-zinc-600 dark:text-zinc-400 text-lg leading-relaxed mb-4"
-            >
-              {parrafo}
-            </p>
-          ))}
-      </div>
 
       {/* ✅ PLANILLA GOOGLE */}
-      {noticia.planilla && (
+      {/* {noticia.planilla && (
         <div className="mt-12">
-          <h3 className="text-center text-xl font-semibold mb-4">
+          <h3 className="text-center text-xl font-semibold ">
             Inscriptos, zonas y resultados
           </h3>
 
@@ -184,7 +250,7 @@ const NewDetails = () => {
             <div className="w-full max-w-4xl overflow-hidden border shadow-sm rounded-lg">
               <iframe
                 src={noticia.planilla}
-                className="w-full h-100 bg-white"
+                className="w-full h-60 bg-white"
                 loading="lazy"
               />
             </div>
@@ -199,10 +265,10 @@ const NewDetails = () => {
             Abrir planilla en nueva pestaña
           </a>
         </div>
-      )}
+      )} */}
 
       {/* Galería */}
-      {noticia.imagenes?.length > 1 && (
+      {/* {noticia.imagenes?.length > 1 && (
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-10">
           {noticia.imagenes.slice(1).map((img, index) => (
             <img
@@ -214,55 +280,57 @@ const NewDetails = () => {
             />
           ))}
         </div>
-      )}
+      )} */}
 
       {/* ✅ MODAL */}
-      {modalOpen && (
-        <div
-          className="fixed inset-0 bg-black/90 flex items-center justify-center z-50"
-          onClick={cerrarModal}
-        >
+      {
+        modalOpen && (
           <div
-            className="relative max-w-5xl w-full mx-4"
-            onClick={(e) => e.stopPropagation()}
+            className="fixed inset-0 bg-black/90 flex items-center justify-center z-50"
+            onClick={cerrarModal}
           >
-            <img
-              src={noticia.imagenes[imagenActiva]}
-              alt=""
-              className="w-full max-h-[85vh] object-contain rounded-lg"
-            />
-
-            {/* Cerrar */}
-            <button
-              onClick={cerrarModal}
-              className="absolute top-4 right-4 bg-black/60 text-white w-10 h-10 rounded-full text-xl"
+            <div
+              className="relative max-w-5xl w-full mx-4"
+              onClick={(e) => e.stopPropagation()}
             >
-              ✕
-            </button>
+              <img
+                src={noticia.imagenes[imagenActiva]}
+                alt=""
+                className="w-full max-h-[85vh] object-contain rounded-lg"
+              />
 
-            {/* Anterior */}
-            <button
-              onClick={anteriorImagen}
-              className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/60 text-white w-10 h-10 rounded-full text-xl"
-            >
-              ‹
-            </button>
+              {/* Cerrar */}
+              <button
+                onClick={cerrarModal}
+                className="absolute top-4 right-4 bg-black/60 text-white w-10 h-10 rounded-full text-xl"
+              >
+                ✕
+              </button>
 
-            {/* Siguiente */}
-            <button
-              onClick={siguienteImagen}
-              className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/60 text-white w-10 h-10 rounded-full text-xl"
-            >
-              ›
-            </button>
+              {/* Anterior */}
+              <button
+                onClick={anteriorImagen}
+                className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/60 text-white w-10 h-10 rounded-full text-xl"
+              >
+                ‹
+              </button>
 
-            {/* Contador */}
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white text-sm bg-black/60 px-3 py-1 rounded-full">
-              {imagenActiva + 1} / {noticia.imagenes.length}
+              {/* Siguiente */}
+              <button
+                onClick={siguienteImagen}
+                className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/60 text-white w-10 h-10 rounded-full text-xl"
+              >
+                ›
+              </button>
+
+              {/* Contador */}
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white text-sm bg-black/60 px-3 py-1 rounded-full">
+                {imagenActiva + 1} / {noticia.imagenes.length}
+              </div>
             </div>
           </div>
-        </div>
-      )}
+        )
+      }
       {/* BOTON VOLVER */}
       <div className="text-right">
         <Link
@@ -272,7 +340,7 @@ const NewDetails = () => {
           ← Volver
         </Link>
       </div>
-    </main>
+    </main >
   );
 };
 

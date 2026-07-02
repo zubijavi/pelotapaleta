@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { db } from "../../firebase";
 import { collection, getDocs } from "firebase/firestore";
-import noticiaDefault from "../../assets/logo.png"; // Imagen por defecto si no hay
+import noticiaDefault from "../../assets/logoPelotari.png"; // Imagen por defecto si no hay
 
 
 const Main = () => {
@@ -48,28 +48,29 @@ const Main = () => {
         setVisibleCount(prev => prev + 2);
     };
     return (
-        <main className="w-full px-4 lg:p-8">
+        <main className="w-full p-8 bg-linear-to-r from-slate-100 to-zinc-300">
 
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 ">
 
                 {/* 📰 NOTICIA PRINCIPAL */}
-                <div className="lg:col-span-8 group">
+                <div className="lg:col-span-8 group bg-zinc-300 rounded-md">
                     {ultimaNoticia ? (
                         <Link to={`/noticia/${ultimaNoticia.id}`}>
-                            <span className="inline-block bg-black text-white text-[9px] lg:text-sm px-2 py-1 uppercase font-black ">
-                                {formatFecha(ultimaNoticia.fecha)}
-                            </span>
+                            <div className="flex flex-col items-center justify-center">
+                                <span className="text-sm py-2">
+                                    {formatFecha(ultimaNoticia.fecha)}
+                                </span>
+                                <h1 className="text-2xl pb-2 lg:pb-0 lg:text-3xl uppercase">
+                                    {ultimaNoticia.titulo}
+                                </h1>
+                            </div>
 
-                            <h1 className="text-center text-2xl lg:text-3xl font-display font-black leading-tight mb-4 uppercase tracking-tighter">
-                                {ultimaNoticia.titulo}
-                            </h1>
-
-                            <div className="overflow-hidden bg-zinc-200 dark:bg-zinc-800 aspect-video flex items-center justify-center">
+                            <div className="overflow-hidden aspect-video flex items-center justify-center">
                                 <img
                                     alt={ultimaNoticia.titulo}
                                     className=" 
-                                    h-52 lg:h-105
-                                    transition-transform duration-700 group-hover:scale-105"
+                                    h-150 lg:h-105
+                                    "
                                     src={ultimaNoticia.imagenes?.[0] || noticiaDefault}
                                 />
                             </div>
@@ -80,30 +81,28 @@ const Main = () => {
                 </div>
 
                 {/* 📰 DOS SIGUIENTES */}
-                <div className="lg:col-span-4 grid grid-cols-2 lg:grid-cols-1 gap-4 lg:gap-6 place-items-center">
+                <div className="lg:col-span-4 grid grid-cols-2 lg:grid-cols-1 gap-4 lg:gap-6 place-items-center ">
                     {/* <div className="border lg:col-span-4 grid grid-cols-2 lg:grid-cols-1 gap-4 lg:gap-6"> */}
                     {eventos.slice(1, 3).map(evento => (
                         <Link
                             key={evento.id}
                             to={`/noticia/${evento.id}`}
-                            className="group"
+                            className="group bg-zinc-300 p-2 rounded-md"
                         >
 
-                            <p className="text-right text-s text-zinc-600 uppercase">
+                            <p className="text-right text-l text-zinc-600">
                                 {formatFecha(evento.fecha)}
                             </p>
 
-                            <h3 className="font-bold text-m leading-snug">
+                            <h3 className="text-l font-['Helvetica'] font-bold uppercase text-center">
                                 {evento.titulo}
                             </h3>
                             {/* <div className="overflow-hidden bg-zinc-200 dark:bg-zinc-800 aspect-video mb-2"> */}
-                            <div className="overflow-hidden bg-zinc-200 aspect-video mb-2 flex items-center justify-center">
-
+                            <div className="aspect-video flex items-center justify-center overflow-hidden rounded-lg">
                                 <img
                                     src={evento.imagenes?.[0] || noticiaDefault}
-                                    className=" object-cover transition-transform duration-500 group-hover:scale-105"
-
-                                // className=" object-cover transition-transform duration-500 group-hover:scale-105"
+                                    alt={evento.titulo}
+                                    className="max-w-full max-h-full object-contain transition-transform duration-500 group-hover:scale-105"
                                 />
                             </div>
                         </Link>

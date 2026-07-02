@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { db, storage } from "../../firebase";
+import { db } from "../../firebase";;
 import {
   collection,
   addDoc,
@@ -9,11 +9,7 @@ import {
   updateDoc,
   serverTimestamp
 } from "firebase/firestore";
-import {
-  ref,
-  uploadBytes,
-  getDownloadURL
-} from "firebase/storage";
+import { uploadImage } from "../../services/cloudinary";
 
 export default function Admin() {
   /* =======================
@@ -84,22 +80,18 @@ export default function Admin() {
   /* =======================
      STORAGE - SUBIR IMÁGENES
   ======================= */
-  const subirImagenesEvento = async () => {
-    const urls = [];
-
-    for (const file of imagenesFiles) {
-      const storageRef = ref(
-        storage,
-        `eventos/${Date.now()}-${file.name}`
-      );
-
-      await uploadBytes(storageRef, file);
-      const url = await getDownloadURL(storageRef);
-      urls.push(url);
-    }
+const subirImagenesEvento = async () => {
+  try {
+    const urls = await Promise.all(
+      imagenesFiles.map((file) => uploadImage(file))
+    );
 
     return urls;
-  };
+  } catch (error) {
+    console.error("Error subiendo imágenes:", error);
+    throw error;
+  }
+};
 
   /* =======================
      CRUD EVENTOS
@@ -352,8 +344,8 @@ export default function Admin() {
             {subiendo
               ? "Subiendo..."
               : editEventoId
-              ? "Actualizar noticia"
-              : "Publicar noticia"}
+                ? "Actualizar noticia"
+                : "Publicar noticia"}
           </button>
         </form>
 

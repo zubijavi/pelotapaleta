@@ -31,11 +31,11 @@ export default function Header() {
 
           {/* Logo izquierdo */}
 
-          <Link
+          {/* <Link
             to="/"
             onClick={scrollToTop}
             className="pl-20"
-          >
+          > */}
 
 
             <img
@@ -46,6 +46,9 @@ export default function Header() {
         object-contain
         scale-300
         z-10
+        pl-15
+        lg:pl-10
+        pointer-events-none
       "
               alt="pelotari"
             />
@@ -53,7 +56,7 @@ export default function Header() {
 
 
 
-          </Link>
+          {/* </Link> */}
 
                    {/* Botón mobile */}
 
@@ -89,8 +92,8 @@ export default function Header() {
           <nav className="hidden md:flex">
 
             <ul className="flex gap-8 text-m tracking-widest uppercase font-['Helvetica']">
-
-              {/* Calendario */}
+          
+              {/* Inicio */}
               <li>
 
                 <Link
@@ -98,21 +101,23 @@ export default function Header() {
                   onClick={scrollToTop}
                   className="hover:opacity-70 transition"
                 >
-                  Calendario
+                  Inicio
                 </Link>
+
               </li>
-              {/* Noticias */}
+
+              {/* Calendario */}
               <li>
 
                 <Link
-                  to="/noticias"
+                  to="/calendario"
                   onClick={scrollToTop}
                   className="hover:opacity-70 transition"
                 >
-                  Noticias
+                  Calendario
                 </Link>
-
               </li>
+
               {/* Tienda */}
               <li>
 
@@ -162,22 +167,40 @@ export default function Header() {
 
 
           <ul className="flex justify-evenly items-center py-4 uppercase">
-            {/* Noticias */}
+            {/* Inicio */}
             <li>
               <Link
-                to="/Noticias"
+                to="/"
                 onClick={() => {
                   setMobileOpen(false);
                   scrollToTop();
                 }}
 
-                className="text-2xl cursor-pointer"
+                className="text-xl cursor-pointer"
               >
 
-                Noticias
+                Inicio
 
               </Link>
             </li>
+
+            {/* Calendario */}
+            <li>
+              <Link
+                to="/calendario"
+                onClick={() => {
+                  setMobileOpen(false);
+                  scrollToTop();
+                }}
+
+                className="text-xl cursor-pointer"
+              >
+
+                Calendario
+
+              </Link>
+            </li>
+
             {/* Contacto */}
             <li>
               <button
@@ -188,7 +211,7 @@ export default function Header() {
 
                 }}
 
-                className="text-2xl cursor-pointer uppercase"
+                className="text-xl cursor-pointer uppercase"
 
               >
 

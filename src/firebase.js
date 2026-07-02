@@ -1,11 +1,14 @@
-// Import the functions you need from the SDKs you need
+// Firebase
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import { getFirestore } from "firebase/firestore"; // Importar Firestore
-import { getStorage } from "firebase/storage"; // Importar Storage
-import { getAuth } from "firebase/auth"
 
-// Your web app's Firebase configuration
+// Firestore
+import { getFirestore } from "firebase/firestore";
+
+// Authentication
+import { getAuth } from "firebase/auth";
+
+// Configuración
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
   authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
@@ -13,17 +16,19 @@ const firebaseConfig = {
   storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
   messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
   appId: import.meta.env.VITE_FIREBASE_APP_ID,
-  measurementId: "G-9H40JRP27P"
+  measurementId: "G-9H40JRP27P",
 };
 
-// Initialize Firebase
+// Inicializar Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
 
-// Initialize Firestore and Storage
-const db = getFirestore(app); // Inicializa Firestore
-const storage = getStorage(app); // Inicializa Storage
+// Analytics (opcional)
+getAnalytics(app);
+
+// Firestore
+const db = getFirestore(app);
+
+// Authentication
 const auth = getAuth(app);
 
-
-export { db, storage, auth }; // Exporta db y storage para usarlos en otros archivos
+export { db, auth };

@@ -25,8 +25,8 @@ function App() {
       <Routes>
         <Route element={<MainLayout />}>
 
-          <Route path="/" element={<Calendario />} />
-          <Route path="/noticias" element={<Home />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/calendario" element={<Calendario />} />
 
           <Route path="/noticia/:id" element={<NewDetails />} />
           <Route path="/reglamento" element={<Players />} />
