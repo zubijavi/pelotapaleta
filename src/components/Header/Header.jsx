@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import LogoTienda from "../../assets/logoTienda.jpg";
-import pelotari from "../../assets/logoPelotari.png";
+import pelotari from "../../assets/logoRectangular.png";
 import ModalContacto from "../Contacto/ModalContacto";
 
 export default function Header() {
@@ -23,27 +23,28 @@ export default function Header() {
 
   return (
 
-    <header className="sticky top-0 z-50 bg-linear-to-r from-slate-100 to-zinc-300 backdrop-blur-md border-b border-zinc-200">
+    <header className="sticky top-0 z-50 bg-linear-to-r from-slate-100 to-zinc-300 backdrop-blur-md border-b border-slate-400">
 
       <div className="container mx-auto px-4 lg:px-2">
 
-        <div className="flex items-center justify-between p-2">
+        <div className="flex items-center justify-between">
 
           {/* Logo izquierdo */}
 
           <Link
             to="/"
             onClick={scrollToTop}
-            className="flex items-center justify-center"
+            className="pl-20"
           >
 
 
             <img
               src={pelotari}
               className="
-        h-24
+        h-24 
         lg:h-24
         object-contain
+        scale-300
         z-10
       "
               alt="pelotari"
@@ -54,52 +55,52 @@ export default function Header() {
 
           </Link>
 
-          {/* Nombre */}
-
-          {/* Botón mobile */}
+                   {/* Botón mobile */}
 
           <div className="md:hidden">
-
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="relative w-14 h-14 flex items-center justify-center"
+              className="relative w-14 h-14 flex items-center justify-around"
             >
-
-
               <span
                 className={`
-                absolute h-0.5 w-6 bg-black transition-all
+                absolute h-0.5 w-10 bg-black transition-all
                 ${mobileOpen ? "rotate-45" : "-translate-y-2"}
                 `}
               />
-
-
               <span
                 className={`
-                absolute h-0.5 w-6 bg-black transition-all
+                absolute h-0.5 w-10 bg-black transition-all
                 ${mobileOpen ? "opacity-0" : ""}
                 `}
               />
 
-
               <span
                 className={`
-                absolute h-0.5 w-6 bg-black transition-all
+                absolute h-0.5 w-10 bg-black transition-all
                 ${mobileOpen ? "-rotate-45" : "translate-y-2"}
                 `}
               />
-
-
             </button>
-
           </div>
 
           {/* Menu desktop */}
 
-          <nav className="hidden md:flex  pr-30">
+          <nav className="hidden md:flex">
 
-            <ul className="flex gap-8 text-sm tracking-widest uppercase">
+            <ul className="flex gap-8 text-m tracking-widest uppercase font-['Helvetica']">
 
+              {/* Calendario */}
+              <li>
+
+                <Link
+                  to="/"
+                  onClick={scrollToTop}
+                  className="hover:opacity-70 transition"
+                >
+                  Calendario
+                </Link>
+              </li>
               {/* Noticias */}
               <li>
 
@@ -157,7 +158,7 @@ export default function Header() {
       >
 
 
-        <div className="border-t bg-sky-500/50 border-zinc-200">
+        <div className="border-t bg-linear-to-r from-slate-500 to-zinc-500 border-zinc-200 text-amber-50 font-['Helvetica']">
 
 
           <ul className="flex justify-evenly items-center py-4 uppercase">

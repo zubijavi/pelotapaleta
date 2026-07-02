@@ -29,7 +29,7 @@ export default function Calendario() {
 
   return (
     <div className="p-6 space-y-8 bg-linear-to-r from-slate-100 to-zinc-300">
-      <h1 className="text-5xl font-bold text-green-700 text-center mb-6">Clausura 2026</h1>
+      <h1 className="text-5xl text-green-900 text-center mb-6 font-['Helvetica'] uppercase">Clausura 2026</h1>
       <div className="grid md:grid-cols-3 gap-4">
         {ordenados.map((ev, i) => (
           <div key={i} className="flex items-center border rounded-lg shadow-sm p-4 bg-gray-50">
