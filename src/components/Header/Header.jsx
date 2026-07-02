@@ -46,7 +46,7 @@ export default function Header() {
         object-contain
         scale-300
         z-10
-        pl-15
+        pl-12
         lg:pl-10
         pointer-events-none
       "
@@ -119,7 +119,7 @@ export default function Header() {
               </li>
 
               {/* Tienda */}
-              <li>
+              {/* <li>
 
                 <a
                   href="/tienda"
@@ -128,7 +128,7 @@ export default function Header() {
                   Tienda
                 </a>
 
-              </li>
+              </li> */}
               {/* Contacto */}
               <li>
                 {/* BOTON MODAL */}
@@ -222,7 +222,7 @@ export default function Header() {
 
             </li>
             {/* Tienda */}
-            <li>
+            {/* <li>
 
               <a
                 href="/tienda"
@@ -252,7 +252,7 @@ export default function Header() {
 
               </a>
 
-            </li>
+            </li> */}
 
 
 
