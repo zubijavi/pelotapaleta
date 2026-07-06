@@ -60,7 +60,7 @@ const Main = () => {
                                 <span className="text-sm py-2">
                                     {formatFecha(ultimaNoticia.fecha)}
                                 </span>
-                                <h1 className="text-2xl pb-2 lg:pb-0 lg:text-3xl uppercase">
+                                <h1 className="text-2xl text-center pb-2 lg:text-3xl uppercase">
                                     {ultimaNoticia.titulo}
                                 </h1>
                             </div>
@@ -68,9 +68,7 @@ const Main = () => {
                             <div className="overflow-hidden aspect-video flex items-center justify-center">
                                 <img
                                     alt={ultimaNoticia.titulo}
-                                    className=" 
-                                    h-150 lg:h-105
-                                    "
+                                    className="h-100 lg:h-120 object-cover"
                                     src={ultimaNoticia.imagenes?.[0] || noticiaDefault}
                                 />
                             </div>

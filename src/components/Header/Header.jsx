@@ -37,16 +37,24 @@ export default function Header() {
             className="pl-20"
           > */}
 
+           <Link
+                to="/"
+                onClick={() => {
+                  setMobileOpen(false);
+                  scrollToTop();
+                }}
 
+                className="text-xl cursor-pointer"
+              >
             <img
               src={pelotari}
               className="
-        h-24 
+        h-16 
         lg:h-24
         object-contain
         scale-300
         z-10
-        pl-12
+        pl-8
         lg:pl-10
         pointer-events-none
       "
@@ -56,7 +64,7 @@ export default function Header() {
 
 
 
-          {/* </Link> */}
+          </Link>
 
                    {/* Botón mobile */}
 
@@ -163,10 +171,10 @@ export default function Header() {
       >
 
 
-        <div className="border-t bg-linear-to-r from-slate-500 to-zinc-500 border-zinc-200 text-amber-50 font-['Helvetica']">
+        <div className="border-t border-zinc-200 text-gray-800 ">
 
 
-          <ul className="flex justify-evenly items-center py-4 uppercase">
+          <ul className="flex flex-col gap-2 p-2">
             {/* Inicio */}
             <li>
               <Link
@@ -211,7 +219,7 @@ export default function Header() {
 
                 }}
 
-                className="text-xl cursor-pointer uppercase"
+                className="text-xl cursor-pointer"
 
               >
 
